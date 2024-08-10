@@ -25,6 +25,6 @@
   },
   "dependencies": {
     "core-js": "^3.37.1",
-    "firebase": "^10.12.4"
+    "firebase": "^10.12.5"
   }
 }

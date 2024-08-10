@@ -1,0 +1,545 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary: #00258c;
+  --mainOne: #e0fbfc;
+  --mainTwo: #007fff;
+  --subOne: #000000;
+  --subTwo: #ffffff;
+  --subThree: #f7f9ff;
+  --Poppins: "Poppins", sans-serif;
+  --OpenSans: "Open Sans", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  background-color: var(--subTwo);
+}
+
+#stockManagementPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+.headerBar {
+  display: flex;
+  background-color: var(--mainTwo);
+  height: 6rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--primary);
+  padding: 0 3rem;
+}
+
+.headerTitle,
+.stockAmount,
+.restockCartTotal,
+.productButton,
+.restockCartProductAmount {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.restockCartCalculation,
+.headerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.headerTitle h1 {
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 32px;
+  color: var(--subTwo);
+}
+
+.mainControlArea {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mainDevelopment {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--mainTwo);
+  width: 90%;
+  margin: 3rem 2rem 1rem 2rem;
+  padding: 3rem;
+  border: 2px solid var(--primary);
+  border-radius: 25px;
+}
+
+.dateDevelopmentArea,
+.searchProductArea {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background-color: var(--subThree);
+  padding: 2rem;
+  gap: 2rem;
+  border-radius: 20px;
+  border: 1px solid var(--primary);
+  width: 45%;
+}
+
+.productListArea {
+  display: grid;
+  padding: 1rem 2rem;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 2rem;
+  grid-row-gap: 2rem;
+  justify-items: stretch;
+  align-items: center;
+}
+
+.productSelection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+  height: 27rem;
+  width: 100%;
+  border-radius: 20px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--subThree);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.productSelection img {
+  height: 12rem;
+  width: 100%;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.productSelection h1,
+.restockCartTitle h1,
+.restockCartProductDetail h1 {
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--primary);
+}
+
+.productSelection h2,
+.restockCartProductDetail h2,
+.stockAmount h1,
+.restockCartProductAmount h1,
+.restockCartTotal h1 {
+  font-family: var(--OpenSans);
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--primary);
+}
+
+.stockInput {
+  height: 3rem;
+  width: 25rem;
+  border-radius: 3px;
+  outline: 1px solid var(--primary);
+  border: 0;
+  font-family: var(--Poppins);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--primary);
+  background-color: var(--subTwo);
+  outline-offset: 3px;
+  transition: 0.25s;
+  text-align: center;
+}
+
+.stockInput::placeholder {
+  font-family: var(--Poppins);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.stockInput:focus {
+  outline-offset: 5px;
+}
+
+.stockInput:focus::placeholder {
+  opacity: 0;
+}
+
+.titleControlArea {
+  color: var(--primary);
+  text-align: center;
+  font-family: var(--Poppins);
+  font-weight: 400;
+  font-size: 24px;
+}
+
+.whiteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 10rem;
+  height: 3.5rem;
+  border-radius: 15px;
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--subTwo);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  cursor: pointer;
+}
+
+.blueButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 10rem;
+  height: 3.5rem;
+  border-radius: 15px;
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  color: var(--subThree);
+  cursor: pointer;
+}
+
+.sellerButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 5rem;
+  height: 3.5rem;
+  border-radius: 15px;
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--subThree);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  cursor: pointer;
+}
+
+.whiteButton:active,
+.blueButton:active,
+.sellerButton:active {
+  transform: scale(0.9);
+  transition: all 350ms;
+}
+
+.restockCartArea {
+  position: absolute;
+  top: 6rem;
+  right: 0;
+  flex-direction: column;
+  background-color: var(--subThree);
+  border-left: 2px solid var(--primary);
+  border-bottom: 2px solid var(--primary);
+  width: 25%;
+  padding: 1rem 0 0 0;
+  z-index: 1000;
+  border-radius: 0 0 0 20px;
+}
+
+.restockCartTitle {
+  background-color: var(--subTwo);
+  border-bottom: 1px solid var(--primary);
+  text-align: center;
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.restockCartProduct {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--subTwo);
+  border: 1px solid var(--primary);
+  border-radius: 15px;
+  margin: 0 1rem 1rem 1rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.restockCartProductDetail {
+  width: 15rem;
+}
+
+.restockCartProduct img {
+  height: 5rem;
+  width: 5rem;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.restockCartFooter {
+  background-color: var(--subTwo);
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--primary);
+  border-radius: 0 0 0 20px;
+  padding: 1rem;
+}
+
+.restockCartButton {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1rem;
+}
+
+.footerBar {
+  background-color: var(--mainTwo);
+  height: 5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 2px solid var(--primary);
+  width: 100%;
+}
+
+.footerBar h1 {
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 28px;
+  color: var(--subTwo);
+  text-align: center;
+}
+
+@media screen and (max-width: 900px) {
+  #navigationButton {
+    display: none;
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--subThree);
+    border-left: 2px solid var(--primary);
+    border-bottom: 2px solid var(--primary);
+    width: 30%;
+    padding: 1rem 0 1rem 0;
+    z-index: 1000;
+    border-radius: 0 0 0 10px;
+  }
+
+  #openNavigation {
+    display: flex;
+  }
+
+  .headerBar {
+    display: flex !important;
+    height: 4rem !important;
+    padding: 15px !important;
+  }
+
+  .headerTitle h1 {
+    font-size: 20px !important;
+  }
+
+  .footerBar {
+    height: 3rem !important;
+  }
+
+  .footerBar h1 {
+    font-size: 14px !important;
+  }
+
+  .headerTitle {
+    gap: 10px !important;
+  }
+
+  .headerButton {
+    gap: 1rem !important;
+  }
+
+  .mainDevelopment {
+    flex-direction: column !important;
+    justify-content: center !important;
+    gap: 1rem;
+    background-color: var(--mainTwo);
+    width: 100% !important;
+    height: 11rem !important;
+    margin: 1rem !important;
+    padding: 0.5rem !important;
+    border: 2px solid var(--primary);
+    border-radius: 15px !important;
+  }
+
+  .dateDevelopmentArea,
+  .searchProductArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--subTwo);
+    width: 100% !important;
+    padding: 10px !important;
+    gap: 2rem;
+    border-radius: 10px !important;
+    border: 1px solid var(--primary);
+  }
+
+  .restockInput {
+    margin: 5px;
+    height: 2rem !important;
+    width: 100% !important;
+    border-radius: 3px !important;
+    font-size: 12px !important;
+    color: var(--primary);
+  }
+
+  .restockInput::placeholder {
+    font-size: 12px !important;
+  }
+
+  .titleControlArea {
+    display: none;
+  }
+
+  .productListArea {
+    display: grid;
+    padding: 0.5rem !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 0.5rem !important;
+    grid-row-gap: 0.5rem !important;
+  }
+
+  .productSelection {
+    padding: 0.5rem !important;
+    height: 17rem !important;
+    width: 100%;
+    border-radius: 10px !important;
+    border: 2px solid var(--primary);
+  }
+
+  .productSelection img {
+    height: 8rem !important;
+    width: 100%;
+    border: 1px solid var(--primary);
+    border-radius: 7px !important;
+    object-fit: cover;
+  }
+
+  .restockCartProductDetail {
+    width: 10rem;
+  }
+
+  .restockCartProduct {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--subTwo);
+    border: 1px solid var(--primary);
+    border-radius: 7px;
+    margin: 5px;
+    padding: 5px;
+  }
+
+  .restockCartProduct img {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 5px;
+    border: 1px solid var(--primary);
+    object-fit: cover;
+  }
+
+  .restockCartTitle {
+    margin-bottom: 0;
+  }
+
+  .productSelection h1,
+  .restockCartTitle h1,
+  .restockCartProductDetail h1 {
+    font-size: 14px !important;
+  }
+
+  .productSelection h2,
+  .restockCartProductDetail h2,
+  .stockAmount h1,
+  .restockCartProductAmount h1,
+  .restockCartTotal h1 {
+    font-size: 12px !important;
+  }
+
+  .restockCartArea {
+    position: absolute;
+    top: 4rem;
+    right: 0;
+    flex-direction: column;
+    background-color: var(--subThree);
+    border-left: 2px solid var(--primary);
+    border-bottom: 2px solid var(--primary);
+    width: 22rem;
+    padding: 1rem 0 0 0;
+    z-index: 1000;
+    border-radius: 0 0 0 20px;
+  }
+
+  .cartProductContainer {
+    max-height: 200px;
+    overflow-y: auto;
+  }
+
+  .sellerButton {
+    width: 3rem !important;
+    height: 3rem !important;
+    border-radius: 10px !important;
+    font-family: var(--Poppins);
+    font-weight: 600;
+    font-size: 20px;
+    position: relative;
+    overflow: hidden;
+    background-color: var(--subThree);
+    color: var(--primary);
+    border: 2px solid var(--primary);
+    cursor: pointer;
+  }
+
+  .sellerButton img {
+    height: 2rem !important;
+    width: 2rem !important;
+  }
+
+  .productButton {
+    gap: 5px !important;
+  }
+
+  .blueButton {
+    padding: 10px !important;
+    width: 5.5rem !important;
+    height: 2.5rem !important;
+    border-radius: 7px !important;
+    font-size: 12px !important;
+  }
+}

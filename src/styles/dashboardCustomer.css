@@ -1,0 +1,685 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+:root {
+  --primary: #00258c;
+  --mainOne: #e0fbfc;
+  --mainTwo: #007fff;
+  --subOne: #000000;
+  --subTwo: #ffffff;
+  --subThree: #f7f9ff;
+  --Poppins: "Poppins", sans-serif;
+  --OpenSans: "Open Sans", sans-serif;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  background-color: var(--subTwo);
+}
+
+#dashboardCustomerPage {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--subThree);
+}
+
+.headerBar {
+  display: flex;
+  background-color: var(--mainTwo);
+  height: 6rem;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid var(--primary);
+  padding: 0 3rem;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.headerButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.headerTitle h1 {
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 32px;
+  color: var(--subTwo);
+}
+
+.headerTitle img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.sellerList {
+  display: flex;
+  flex-direction: column;
+}
+
+.searchSellerArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  align-items: end;
+  gap: 2rem;
+  padding: 1rem 2rem 0 0;
+  width: 100%;
+}
+
+.searchSeller,
+.sortArea {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+.sortArea select {
+  padding: 8px;
+  font-family: var(--OpenSans);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: 4px;
+  background-color: var(--subTwo);
+  appearance: none;
+  cursor: pointer;
+}
+
+.sortArea select:focus {
+  outline: none;
+  border-color: var(--mainTwo);
+}
+
+.searchSellerInput {
+  height: 2rem;
+  width: 30rem;
+  border-radius: 5px;
+  outline: 2px solid var(--primary);
+  border: 0;
+  font-family: var(--Poppins);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--primary);
+  background-color: var(--subTwo);
+  outline-offset: 3px;
+  transition: 0.25s;
+  text-align: center;
+}
+
+.searchSellerInput::placeholder {
+  font-family: var(--Poppins);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--primary);
+  padding-left: 1rem;
+  margin-left: 0;
+}
+
+.searchSellerInput:focus {
+  outline-offset: 5px;
+}
+
+.searchSellerInput:focus::placeholder {
+  opacity: 0;
+}
+
+.sellerListHeader {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.sellerListHeader h1 {
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 32px;
+  color: var(--primary);
+}
+
+.sellerInformationArea {
+  display: flex;
+}
+
+.sellerListArea {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  justify-items: center;
+  align-items: center;
+  margin: 1rem;
+}
+
+.sellerArea {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  height: 17rem;
+  width: 33rem;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--subTwo);
+  border: 2px solid var(--primary);
+}
+
+.sellerDetail {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sellerProductCatalog {
+  display: flex;
+  flex-direction: column;
+  width: 67rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  margin: 1rem;
+  border-radius: 15px;
+  background-color: var(--subTwo);
+  border: 2px solid var(--primary);
+  transition: all 950ms;
+}
+
+.sellerCatalogHeader,
+.sellerReviewHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-left: 2rem;
+  width: 100%;
+}
+
+.sellerProductList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem 1rem;
+}
+
+.sellerReviewArea {
+  display: flex;
+  flex-direction: column;
+  width: 67rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  margin: 1rem;
+  border-radius: 15px;
+  position: relative;
+  background-color: var(--subTwo);
+  border: 2px solid var(--primary);
+}
+
+.sellerReviewPost {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin: 1.5rem 0.5rem;
+}
+
+.sellerReviewList {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  grid-column-gap: 15px;
+  grid-row-gap: 15px;
+  justify-items: center;
+  align-items: center;
+  padding: 1rem;
+  margin-top: 1rem;
+  max-height: 20rem;
+  width: 100%;
+  border: 2px solid var(--primary);
+  border-radius: 15px;
+  overflow-y: auto;
+  background-color: var(--subThree);
+}
+
+.sellerReview {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: visible;
+  background-color: var(--subTwo);
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+}
+
+.sellerReview h1 {
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--primary);
+}
+
+.sellerReview h2 {
+  font-family: var(--OpenSans);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--primary);
+  text-align: justify;
+  margin: 0;
+}
+
+.sellerReviewInput {
+  height: 6rem;
+  width: 100%;
+  border-radius: 3px;
+  outline: 1px solid var(--primary);
+  border: 0;
+  font-family: var(--Poppins);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--primary);
+  background-color: var(--subTwo);
+  outline-offset: 3px;
+  transition: 0.25s;
+  padding: 1rem;
+  box-sizing: border-box;
+  resize: none;
+  overflow: auto;
+}
+
+.sellerReviewInput::placeholder {
+  font-family: var(--Poppins);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--primary);
+  padding-left: 1rem;
+  margin-left: 0;
+}
+
+.sellerReviewInput:focus {
+  outline-offset: 5px;
+}
+
+.sellerReviewInput:focus::placeholder {
+  opacity: 0;
+}
+
+.sellerProduct {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 1rem;
+  align-items: center;
+  padding: 1rem 1.5rem 1rem 1.5rem;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: visible;
+  background-color: var(--subTwo);
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+}
+
+.sellerProduct img {
+  height: 7rem;
+  width: 100%;
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+}
+
+.sellerProduct h1 {
+  font-family: var(--Poppins);
+  font-weight: 500;
+  font-size: 20px;
+  color: var(--primary);
+  text-align: center;
+}
+
+.sellerProduct h2 {
+  font-family: var(--OpenSans);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--primary);
+}
+
+.sellerDetail h1,
+.sellerCatalogHeader h1,
+.sellerReviewHeader h1,
+.sortArea label {
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 24px;
+  color: var(--primary);
+  text-align: center;
+}
+
+.sellerLocation h2 {
+  height: 7rem;
+  font-family: var(--OpenSans);
+  font-weight: 400;
+  font-size: 18px;
+  color: var(--primary);
+  text-align: justify;
+}
+
+.sellerButtonArea {
+  display: flex;
+  justify-content: space-between;
+}
+
+.sellersButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 6rem;
+  height: 3.5rem;
+  border-radius: 10px;
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--subThree);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  cursor: pointer;
+}
+
+.sellersButton img {
+  height: 2.7rem;
+  width: 2.7rem;
+  object-fit: fill;
+}
+
+.bookmarkButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  position: relative;
+  overflow: hidden;
+  background-color: transparent;
+  color: var(--primary);
+  border: none;
+  cursor: pointer;
+}
+
+.bookmarkButton img {
+  width: 3rem;
+  height: 3rem;
+}
+
+.whiteButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 10rem;
+  height: 3.5rem;
+  border-radius: 15px;
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--subTwo);
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  cursor: pointer;
+}
+
+.blueButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  width: 10rem;
+  height: 3.5rem;
+  border-radius: 15px;
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  color: var(--subThree);
+  cursor: pointer;
+}
+
+.whiteButton:active,
+.blueButton:active,
+.sellersButton:active,
+.bookmarkButton:active {
+  transform: scale(0.9);
+  transition: all 350ms;
+}
+
+@media screen and (max-width: 900px) {
+  .headerBar {
+    display: flex !important;
+    height: 4rem !important;
+    padding: 15px !important;
+  }
+
+  .headerTitle h1 {
+    font-size: 20px !important;
+  }
+
+  .searchSellerInput {
+    margin: 0 !important;
+    height: 2rem !important;
+    width: 17rem !important;
+    border-radius: 3px !important;
+    font-size: 10px !important;
+    color: var(--primary);
+  }
+
+  .searchSellerInput::placeholder,
+  .sellerReviewInput::placeholder {
+    font-size: 10px !important;
+    padding: 0 !important;
+  }
+
+  .searchSellerArea {
+    padding: 1rem 1rem 0 0 !important;
+  }
+
+  .searchSeller,
+  .sortArea {
+    gap: 1rem;
+  }
+
+  .sortArea select {
+    padding: 5px;
+    font-size: 12px;
+  }
+
+  .sellerCatalogHeader,
+  .sellerReviewHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 !important;
+    width: 100%;
+  }
+
+  .sellerDetail {
+    padding-left: 5px !important;
+  }
+
+  .sellerCatalogHeader h1,
+  .sellerReviewHeader h1,
+  .sortArea label {
+    font-family: var(--Poppins);
+    font-weight: 600;
+    font-size: 12px !important;
+    color: var(--primary);
+    text-align: center !important;
+  }
+
+  .sellerDetail h1 {
+    font-family: var(--Poppins);
+    font-weight: 600;
+    font-size: 12px !important;
+    color: var(--primary);
+    text-align: start !important;
+  }
+
+
+  .sellerListHeader h1 {
+    font-size: 18px !important;
+  }
+
+  .sellerLocation h2 {
+    font-size: 7px !important;
+    font-weight: 400 !important;
+    text-align: justify;
+    height: auto !important;
+    padding: 0 5px !important;
+  }
+
+  .sellerListArea {
+    display: grid;
+    padding: 0.5rem !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 0.5rem !important;
+    grid-row-gap: 0.5rem !important;
+  }
+
+  .sellerArea {
+    padding: 0.5rem !important;
+    gap: 1rem !important;
+    height: 100% !important;
+    width: 100%;
+    overflow: visible;
+    border-radius: 10px !important;
+    border: 2px solid var(--primary);
+  }
+
+  .bookmarkButton {
+    width: auto !important;
+    height: auto !important;
+  }
+
+  .sellersButton {
+    width: 2.5rem !important;
+    height: 2rem !important;
+    border-radius: 5px !important;
+  }
+
+  .bookmarkButton img {
+    height: 1.5rem !important;
+    width: 1.5rem !important;
+  }
+
+  .sellersButton img {
+    height: 1rem !important;
+    width: 1rem !important;
+  }
+
+  .sellerInformationArea {
+    flex-direction: column !important;
+    gap: 1rem !important;
+  }
+
+  .sellerReviewArea {
+    width: 25rem !important;
+    padding: 10px 15px !important;
+    margin: 0 1.5rem !important;
+    border-radius: 15px;
+  }
+
+  .sellerProductCatalog {
+    width: 25rem !important;
+    padding: 10px 15px !important;
+    margin: 0 1.5rem !important;
+    border-radius: 15px;
+  }
+
+  .sellerReviewPost {
+    margin: 1rem .5rem 0 .5rem !important;
+  }
+
+  .sellerReviewList {
+    grid-template-columns: repeat(1, 1fr) !important;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    padding: 10px !important;
+    margin-top: 10px !important;
+    max-height: 10rem !important;
+    border-radius: 10px !important;
+  }
+
+  .sellerReview {
+    gap: 5px !important;
+    padding: 10px 15px !important;
+    border-radius: 5px !important;
+  }
+
+  .sellerReview h1 {
+    font-size: 12px !important;
+  }
+
+  .sellerReview h2 {
+    font-size: 10px !important;
+  }
+
+  .sellerReviewInput {
+    height: 4rem !important;
+    font-size: 12px !important;
+    padding: 10px !important;
+  }
+
+  .sellerProductList {
+    display: grid;
+    padding: 0.5rem 0 !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 0.5rem !important;
+    grid-row-gap: 0.5rem !important;
+    max-height: 15rem !important;
+    overflow-y: auto;
+  }
+
+  .sellerProduct {
+    gap: 5px !important;
+    padding: 10px 15px !important;
+    border-radius: 10px !important;
+  }
+
+  .sellerProduct img {
+    height: 4rem !important;
+    border-radius: 5px !important;
+  }
+
+  .sellerProduct h1 {
+    font-size: 10px !important;
+  }
+
+  .sellerProduct h2 {
+    font-size: 10px !important;
+  }
+}

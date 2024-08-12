@@ -1,4 +1,3 @@
-// Import styles and Firebase modules
 import "../../../styles/dashboardSeller.css";
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -12,12 +11,10 @@ import {
 } from "firebase/firestore";
 import firebaseConfig from "../../common/config";
 
-// Importing image and icon assets for dashboard seller page
 import profileIcon from "../../../public/icons/profile-icon.svg";
 import cartIcon from "../../../public/icons/cart-icon.svg";
 import menuIcon from "../../../public/icons/menu-icon.svg";
 
-// Initialize Firebase app and services
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
@@ -25,87 +22,90 @@ const db = getFirestore(firebaseApp);
 const renderDashboardSellerPage = (container) => {
   container.innerHTML = `
     <main id="dashboardSellerPage">
-        <header>
-            <div class="headerBar">
-                <div class="headerTitle">
-                <button class="sellerButton" id="profilePage">
-                  <img src=${profileIcon} alt="Profile Icon" />
-                </button>
-                <h1 id="marketName">Loading</h1>
-                </div>
-              <div class="headerButton" id="navigationButton">
-                    <button class="whiteButton" id="productPage">Produk</button>
-                    <button class="whiteButton" id="stockPage">Stok</button>
-                    <button class="whiteButton" id="reportsPage">Laporan</button>
-              </div>
-              <div class="headerButton" id="controlButton">
-                    <button class="sellerButton" id="openCartButton">
-                      <img src=${cartIcon} alt="Cart Icon" />
-                    </button>
-                    <button class="sellerButton" id="openNavigation">
-                      <img src=${menuIcon} alt="Menu Icon" />
-                    </button>
-              </div>
-            </div>
-        </header>
-
-        <section class="mainControlArea">
-            <div class="mainDevelopment">
-                <div class="dateDevelopmentArea">
-                    <label for="checkoutDate" class="titleControlArea">Tanggal</label>
-                    <input type="date" id="checkoutDate" name="checkoutDate" class="dashboardInput" />
-                    <button class="blueButton" id="updateDashboardDate">Simpan</button>
-                </div>
-
-                <div class="searchProductArea">
-                    <label for="searchProduct" class="titleControlArea">Cari</label>
-                    <input type="text" id="searchProduct" name="searchProduct" class="dashboardInput" placeholder="Cari Produk"/>
-                    <button class="blueButton" id="searchProductButton">Cari</button>
-                </div>
-            </div>
-        </section>
-
-        <section class="productListArea" id="productListArea">
-            <!-- Products will be dynamically added here -->
-        </section>
-
-        <section class="dashboardCartArea" id="dashboardCartArea" style="display: none;">
-            <div class="dashboardCartTitle">
-              <h1>Konfirmasi Transaksi Penjualan</h1>
-            </div>
-            <div id="dashboardCartProducts" class="cartProductContainer">
-              <!-- Cart products will be dynamically added here -->
-            </div>
-            <div class="dashboardCartFooter">
-                <div class="dashboardCartCalculation">
-                    <div class="dashboardCartTotal">
-                        <h1>Total Harga :</h1>
-                        <h1 id="dashboardCartTotalPrice">0</h1>
-                    </div>
-                    <div class="dashboardCartTotal">
-                        <h1>Total Produk :</h1>
-                        <h1 id="dashboardCartTotalProduct">0</h1>
-                    </div>
-                </div>
-                <div class="dashboardCartButton">
-                    <button class="blueButton" id="confirmTransaction">Konfirmasi</button>
-                    <button class="whiteButton" id="resetCart">Reset</button>
-                </div>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <div class="footerBar">
-            <h1>Platform Pendukung Usaha Lokal Indonesia</h1>
+      <header>
+        <div class="headerBar">
+          <div class="headerTitle">
+            <button class="sellerButton" id="profilePage">
+              <img src=${profileIcon} alt="Profile Icon" />
+            </button>
+            <h1 id="marketName">Loading</h1>
+          </div>
+          <div class="headerButton" id="navigationButton">
+            <button class="whiteButton" id="productPage">Produk</button>
+            <button class="whiteButton" id="stockPage">Stok</button>
+            <button class="whiteButton" id="reportsPage">Laporan</button>
+          </div>
+          <div class="headerButton" id="controlButton">
+            <button class="sellerButton" id="openCartButton">
+              <img src=${cartIcon} alt="Cart Icon" />
+            </button>
+            <button class="sellerButton" id="openNavigation">
+              <img src=${menuIcon} alt="Menu Icon" />
+            </button>
+          </div>
         </div>
+      </header>
+
+      <section class="mainControlArea">
+        <div class="mainDevelopment">
+          <div class="dateDevelopmentArea">
+            <label for="checkoutDate" class="titleControlArea">Tanggal</label>
+            <input type="date" id="checkoutDate"
+                  name="checkoutDate" class="dashboardInput" />
+            <button class="blueButton" id="updateDashboardDate">Simpan</button>
+          </div>
+
+          <div class="searchProductArea">
+            <label for="searchProduct" class="titleControlArea">Cari</label>
+            <input type="text" id="searchProduct"
+                  name="searchProduct" class="dashboardInput"
+                  placeholder="Cari Produk" />
+            <button class="blueButton" id="searchProductButton">Cari</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="productListArea" id="productListArea">
+        <!-- Products will be dynamically added here -->
+      </section>
+
+      <section class="dashboardCartArea" id="dashboardCartArea"
+              style="display: none;">
+        <div class="dashboardCartTitle">
+          <h1>Konfirmasi Transaksi Penjualan</h1>
+        </div>
+        <div id="dashboardCartProducts" class="cartProductContainer">
+          <!-- Cart products will be dynamically added here -->
+        </div>
+        <div class="dashboardCartFooter">
+          <div class="dashboardCartCalculation">
+            <div class="dashboardCartTotal">
+              <h1>Total Harga :</h1>
+              <h1 id="dashboardCartTotalPrice">0</h1>
+            </div>
+            <div class="dashboardCartTotal">
+              <h1>Total Produk :</h1>
+              <h1 id="dashboardCartTotalProduct">0</h1>
+            </div>
+          </div>
+          <div class="dashboardCartButton">
+            <button class="blueButton" id="confirmTransaction">Konfirmasi</button>
+            <button class="whiteButton" id="resetCart">Reset</button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footerBar">
+        <h1>Platform Pendukung Usaha Lokal Indonesia</h1>
+      </div>
     </footer>
   `;
 
-  // Initialize empty arrays to hold products and cart items
   let products = [];
   let cart = {};
 
-  // Function to load seller products from Firestore
   const loadSellerProducts = async (userId) => {
     try {
       const products = [];
@@ -122,12 +122,10 @@ const renderDashboardSellerPage = (container) => {
     }
   };
 
-  // Function to display products on the dashboard
   const displayProducts = (products) => {
     const productListArea = container.querySelector("#productListArea");
     productListArea.innerHTML = "";
 
-    // Sort products by name A-Z
     products.sort((a, b) => a.name.localeCompare(b.name));
 
     products.forEach((product) => {
@@ -148,7 +146,6 @@ const renderDashboardSellerPage = (container) => {
       `;
       productListArea.insertAdjacentHTML("beforeend", productHTML);
 
-      // Mark product with zero stock
       if (product.stock === 0) {
         const productElement = productListArea.querySelector(
           `.productSelection[data-product-id="${product.id}"]`,
@@ -159,7 +156,6 @@ const renderDashboardSellerPage = (container) => {
       }
     });
 
-    // Add event listeners for "Tambah" and "Hapus" buttons
     productListArea
       .querySelectorAll(".addDashboardCartProduct")
       .forEach((button) => {
@@ -172,6 +168,7 @@ const renderDashboardSellerPage = (container) => {
           }
         });
       });
+
     productListArea
       .querySelectorAll(".reduceDashboardCartProduct")
       .forEach((button) => {
@@ -188,13 +185,12 @@ const renderDashboardSellerPage = (container) => {
     dashboardCartArea.style.display = "block";
   };
 
-  // JavaScript to toggle the navigation menu on small screens
-  document.getElementById('openNavigation').addEventListener('click', () => {
-    const navigationButton = document.getElementById('navigationButton');
-    if (navigationButton.style.display === 'flex') {
-      navigationButton.style.display = 'none';
+  document.getElementById("openNavigation").addEventListener("click", () => {
+    const navigationButton = document.getElementById("navigationButton");
+    if (navigationButton.style.display === "flex") {
+      navigationButton.style.display = "none";
     } else {
-      navigationButton.style.display = 'flex';
+      navigationButton.style.display = "flex";
     }
   });
 
@@ -211,7 +207,9 @@ const renderDashboardSellerPage = (container) => {
       if (cart[productId].quantity < product.stock) {
         cart[productId].quantity += 1;
       } else {
-        alert(`Jumlah produk "${product.name}" di keranjang sudah mencapai stok yang tersedia.`);
+        alert(
+          `Jumlah produk "${product.name}" di keranjang sudah mencapai stok yang tersedia.`,
+        );
       }
     }
 
@@ -230,7 +228,6 @@ const renderDashboardSellerPage = (container) => {
     showCart();
   };
 
-  // Function to update the cart display on the dashboard
   const updateCartDisplay = () => {
     const dashboardCartProducts = container.querySelector(
       "#dashboardCartProducts",
@@ -245,7 +242,6 @@ const renderDashboardSellerPage = (container) => {
     let totalPrice = 0;
     let totalProducts = 0;
 
-    // Iterate over cart items to update total price and product count
     Object.keys(cart).forEach((productId) => {
       const product = products.find((p) => p.id === productId);
       const productQuantity = cart[productId].quantity;
@@ -254,7 +250,6 @@ const renderDashboardSellerPage = (container) => {
       totalPrice += productTotalPrice;
       totalProducts += productQuantity;
 
-      // Add cart items to the display
       const cartProductHTML = `
         <div class="dashboardCartProduct">
             <img src="${product.imageUrl || "../../../public/images/dummyImage.jpg"}" alt="${product.name}" />
@@ -271,18 +266,15 @@ const renderDashboardSellerPage = (container) => {
       dashboardCartProducts.insertAdjacentHTML("beforeend", cartProductHTML);
     });
 
-    // Update total price and product count in the cart display
     dashboardCartTotalPrice.textContent = totalPrice;
     dashboardCartTotalProduct.textContent = totalProducts;
   };
 
-  // Function to reset the cart
   const resetCart = () => {
     cart = {};
     updateCartDisplay();
   };
 
-  // Function to confirm the cart and save the transaction to Firestore
   const confirmCart = async (userId) => {
     const checkoutDate = container.querySelector("#checkoutDate").value;
     const formattedDate = checkoutDate.split("-").reverse().join("-");
@@ -322,7 +314,6 @@ const renderDashboardSellerPage = (container) => {
         }
       });
 
-      // Update stock in Firestore
       await Promise.all(
         Object.keys(cart).map(async (productId) => {
           const productRef = doc(db, `sellers/${userId}/products`, productId);
@@ -346,7 +337,6 @@ const renderDashboardSellerPage = (container) => {
     }
   };
 
-  // Function to update the stock display on the dashboard
   const updateProductStockDisplay = (productId, updatedStock) => {
     const productElement = container.querySelector(
       `.productSelection[data-product-id="${productId}"]`,
@@ -357,13 +347,11 @@ const renderDashboardSellerPage = (container) => {
     }
   };
 
-  // Function to load and display products for the seller
   const loadAndDisplayProducts = async (userId) => {
     products = await loadSellerProducts(userId);
     displayProducts(products);
   };
 
-  // Function to load and display market name
   const loadAndDisplayMarketName = async (userId) => {
     try {
       const userDoc = await getDoc(doc(db, "sellers", userId));
@@ -376,7 +364,6 @@ const renderDashboardSellerPage = (container) => {
     }
   };
 
-  // Function to update the dashboard date and save it to Firestore
   const handleUpdateDashboardDate = async (userId) => {
     const checkoutDate = container.querySelector("#checkoutDate").value;
     const formattedDate = checkoutDate.split("-").reverse().join("-");
@@ -392,11 +379,13 @@ const renderDashboardSellerPage = (container) => {
       }
       alert("Tanggal berhasil diperbarui!");
     } catch (error) {
-      console.error("Terjadi kesalahan saat memperbarui tanggal penjualan:", error);
+      console.error(
+        "Terjadi kesalahan saat memperbarui tanggal penjualan:",
+        error,
+      );
     }
   };
 
-  // Function to save today's date if it does not exist in Firestore
   const saveTodayDateIfNotExists = async (userId) => {
     const today = new Date().toISOString().split("T")[0];
     const formattedDate = today.split("-").reverse().join("-");
@@ -411,11 +400,13 @@ const renderDashboardSellerPage = (container) => {
         await setDoc(docRef, { transactionsIncomeProducts: [] });
       }
     } catch (error) {
-      console.error("Terjadi kesalahan saat menetapkan tanggal hari ini:", error);
+      console.error(
+        "Terjadi kesalahan saat menetapkan tanggal hari ini:",
+        error,
+      );
     }
   };
 
-  // Function to search for products by name
   const searchProduct = () => {
     const searchProductInput = container
       .querySelector("#searchProduct")
@@ -425,7 +416,6 @@ const renderDashboardSellerPage = (container) => {
     displayProducts(filteredProducts);
   };
 
-  // Add event listeners for buttons
   container
     .querySelector("#updateDashboardDate")
     .addEventListener("click", async () => {
@@ -467,7 +457,6 @@ const renderDashboardSellerPage = (container) => {
     window.location.href = "/profileSeller";
   });
 
-  // Listen for authentication state changes and load data accordingly
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const userId = user.uid;
@@ -480,5 +469,4 @@ const renderDashboardSellerPage = (container) => {
   });
 };
 
-// Export the renderDashboardSellerPage function
 export default renderDashboardSellerPage;

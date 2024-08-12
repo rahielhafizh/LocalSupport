@@ -44,6 +44,7 @@ main {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  min-height: 90vh;
 }
 
 .backButton {
@@ -215,6 +216,7 @@ main {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: flex-start;
+    min-height: 100%;
     padding-top: 2rem;
   }
 

@@ -8,7 +8,6 @@ import chartIcon from "../../public/icons/chart-icon.svg";
 
 document.body.style.backgroundColor = "#ffffff";
 
-// Defining a function to render the landing page
 const renderLandingPage = (container) => {
   container.innerHTML = `
     <main id="landingPage">
@@ -19,10 +18,10 @@ const renderLandingPage = (container) => {
           </div>
           <div class="headerButtonArea">
             <button class="whiteButton" id="loginCustomer">
-            Pembeli
+              Pembeli
             </button>
             <button class="whiteButton" id="loginSeller">
-            Penjual
+              Penjual
             </button>
           </div>
         </div>
@@ -105,24 +104,21 @@ const renderLandingPage = (container) => {
       </section>
     </main>
     <footer>
-        <div class="footerBar">
-            <h1>Platform Pendukung Usaha Lokal Indonesia</h1>
-        </div>
+      <div class="footerBar">
+        <h1>Platform Pendukung Usaha Lokal Indonesia</h1>
+      </div>
     </footer>
-    `;
+  `;
 
-  // Selecting elements for event handling
   const loginCustomerButton = container.querySelector("#loginCustomer");
   const loginSellerButton = container.querySelector("#loginSeller");
 
-  // Adding event listener to redirect to the login buyer page when clicking the button
   if (loginCustomerButton) {
     loginCustomerButton.addEventListener("click", () => {
       window.location.href = "/loginCustomer";
     });
   }
 
-  // Adding event listener to redirect to the login seller page when clicking the button
   if (loginSellerButton) {
     loginSellerButton.addEventListener("click", () => {
       window.location.href = "/loginSeller";
@@ -130,5 +126,4 @@ const renderLandingPage = (container) => {
   }
 };
 
-// Exporting the renderLandingPage function as default
 export default renderLandingPage;

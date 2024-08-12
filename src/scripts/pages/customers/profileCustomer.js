@@ -6,7 +6,6 @@ import {
 import "../../../styles/profileCustomer.css";
 import firebaseConfig from "../../common/config";
 
-// Importing image and icon assets for profile seller page
 import backIcon from "../../../public/icons/back-icon.svg";
 
 const firebaseApp = initializeApp(firebaseConfig);

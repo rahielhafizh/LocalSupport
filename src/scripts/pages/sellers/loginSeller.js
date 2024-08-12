@@ -3,7 +3,6 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import '../../../styles/loginSeller.css';
 import firebaseConfig from '../../common/config';
 
-// Importing image and icon assets for login seller page
 import backIcon from "../../../public/icons/back-icon.svg";
 
 const firebaseApp = initializeApp(firebaseConfig);

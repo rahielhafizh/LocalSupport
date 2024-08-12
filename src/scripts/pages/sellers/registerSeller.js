@@ -1,4 +1,3 @@
-// Import styles and Firebase dependencies
 import "../../../styles/registerSeller.css";
 import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -7,12 +6,10 @@ import firebaseConfig from "../../common/config";
 
 import backIcon from "../../../public/icons/back-icon.svg";
 
-// Initialize Firebase app and obtain authentication and firestore instances
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const firestore = getFirestore(firebaseApp);
 
-// Define the function to render the register page
 const renderRegisterSeller = (container) => {
   document.body.style.backgroundColor = "#00258c";
 
@@ -215,5 +212,4 @@ const renderRegisterSeller = (container) => {
   }
 };
 
-// Export the renderRegisterPage function for external use
 export default renderRegisterSeller;

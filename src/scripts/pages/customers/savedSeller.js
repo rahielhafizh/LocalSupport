@@ -28,78 +28,78 @@ const renderSavedSellerPage = async (container) => {
   document.body.style.backgroundColor = "#f7f9ff";
 
   container.innerHTML = `
-<main id="savedSellerPage">
-  <header>
-    <div class="headerBar">
-      <div class="headerTitle">
-        <button class="sellersButton" id="profilePage">
-          <img src=${profileIcon} alt="Profile Icon" />
-        </button>
-        <h1 id="customerName">Loading</h1>
-      </div>
-      <div class="headerButton">
-        <button class="whiteButton" id="dashboardCustomer">
-          <a href="/dashboardCustomer"></a>Beranda
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <section class="savedSellerList" id="savedSellerList">
-    <div class="savedSellerListHeader" id="savedSellerListHeader">
-      <h1>Usaha Lokal yang Anda Simpan</h1>
-    </div>
-
-  <div class="sellerInformationArea">
-    <div class="sellerProductCatalog" id="sellerProductCatalog" style="display: none;">
-      <div class="sellerCatalogHeader" id="sellerCatalogHeader">
-        <h1 id="catalogMarketName">Nama Usaha</h1>
-        <div class="closeCatalog">
-          <button class="sellersButton" id="closeCatalogButton">
-            <img src=${closeIcon} alt="Back Icon" />
+  <main id="savedSellerPage">
+    <header>
+      <div class="headerBar">
+        <div class="headerTitle">
+          <button class="sellersButton" id="profilePage">
+            <img src=${profileIcon} alt="Profile Icon" />
+          </button>
+          <h1 id="customerName">Loading</h1>
+        </div>
+        <div class="headerButton">
+          <button class="whiteButton" id="dashboardCustomer">
+            <a href="/dashboardCustomer"></a>Beranda
           </button>
         </div>
       </div>
-      <div class="sellerProductList" id="sellerProductList">
-        <!-- Seller Products will be populated here -->
-      </div>
-    </div>
+    </header>
 
-    <div class="sellerReviewArea" id="sellerReviewArea" style="display: none;">
-      <div class="sellerReviewHeader" id="sellerReviewHeader">
-        <h1 id="reviewMarketName">Nama Usaha</h1>
-        <div class="closeCatalog">
-          <button class="sellersButton" id="closeReviewButton">
-            <img src=${closeIcon} alt="Back Icon" />
-          </button>
+    <section class="savedSellerList" id="savedSellerList">
+      <div class="savedSellerListHeader" id="savedSellerListHeader">
+        <h1>Usaha Lokal yang Anda Simpan</h1>
+      </div>
+
+      <div class="sellerInformationArea">
+        <div class="sellerProductCatalog" id="sellerProductCatalog" style="display: none;">
+          <div class="sellerCatalogHeader" id="sellerCatalogHeader">
+            <h1 id="catalogMarketName">Nama Usaha</h1>
+            <div class="closeCatalog">
+              <button class="sellersButton" id="closeCatalogButton">
+                <img src=${closeIcon} alt="Back Icon" />
+              </button>
+            </div>
+          </div>
+          <div class="sellerProductList" id="sellerProductList">
+            <!-- Seller Products will be populated here -->
+          </div>
+        </div>
+
+        <div class="sellerReviewArea" id="sellerReviewArea" style="display: none;">
+          <div class="sellerReviewHeader" id="sellerReviewHeader">
+            <h1 id="reviewMarketName">Nama Usaha</h1>
+            <div class="closeCatalog">
+              <button class="sellersButton" id="closeReviewButton">
+                <img src=${closeIcon} alt="Back Icon" />
+              </button>
+            </div>
+          </div>
+          <div class="sellerReviewList" id="sellerReviewList">
+            <!-- Seller Reviews will be populated here -->
+          </div>
+          <div class="sellerReviewPost" id="sellerReviewPost">
+            <textarea
+              type="text"
+              id="reviewInput"
+              name="sellerReviewPost"
+              class="sellerReviewInput"
+              placeholder="Bagikan penilaian anda"></textarea>
+            <button class="blueButton" id="sellerReviewSubmit">Kirim</button>
+          </div>
         </div>
       </div>
-      <div class="sellerReviewList" id="sellerReviewList">
-        <!-- Seller Reviews will be populated here -->
-      </div>
-      <div class="sellerReviewPost" id="sellerReviewPost">
-        <textarea
-          type="text"
-          id="reviewInput"
-          name="sellerReviewPost"
-          class="sellerReviewInput"
-          placeholder="Bagikan penilaian anda"></textarea>
-        <button class="blueButton" id="sellerReviewSubmit">Kirim</button>
-      </div>
-    </div>
-  </div>
 
-    <div class="savedSellerListArea" id="savedSellerListArea">
-      <!-- Saved Seller Area will be populated here -->
+      <div class="savedSellerListArea" id="savedSellerListArea">
+        <!-- Saved Seller Area will be populated here -->
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footerBar">
+      <h1>Platform Pendukung Usaha Lokal Indonesia</h1>
     </div>
-  </section>
-</main>
-    <footer>
-        <div class="footerBar">
-            <h1>Platform Pendukung Usaha Lokal Indonesia</h1>
-        </div>
-    </footer>
-  `;
+  </footer>
+`;
 
   onAuthStateChanged(auth, async (user) => {
     if (user) {
@@ -164,10 +164,8 @@ const renderSavedSellerPage = async (container) => {
         sellerListArea.appendChild(sellerDiv);
       });
 
-      // Load saved sellers to update bookmark icons
       await loadSavedSellers();
 
-      // Event listener for showAllProduct button
       document.querySelectorAll(".showAllProduct").forEach((button) => {
         button.addEventListener("click", async (event) => {
           const sellerId = event.currentTarget.id;
@@ -175,7 +173,6 @@ const renderSavedSellerPage = async (container) => {
         });
       });
 
-      // Event listener for showReviewArea button
       document.querySelectorAll(".showReviewArea").forEach((button) => {
         button.addEventListener("click", async (event) => {
           const sellerId = event.currentTarget.id;
@@ -187,7 +184,6 @@ const renderSavedSellerPage = async (container) => {
         });
       });
 
-      // Event listener for showMap button
       document.querySelectorAll(".showMap").forEach((button) => {
         button.addEventListener("click", async (event) => {
           const sellerId = event.currentTarget.id;
@@ -202,7 +198,6 @@ const renderSavedSellerPage = async (container) => {
         });
       });
 
-      // Event listener for callSeller button
       document.querySelectorAll(".callSeller").forEach((button) => {
         button.addEventListener("click", async (event) => {
           const sellerId = event.currentTarget.id;
@@ -214,7 +209,6 @@ const renderSavedSellerPage = async (container) => {
         });
       });
 
-      // Event listener for bookmarkSeller button
       document.querySelectorAll(".bookmarkSeller").forEach((button) => {
         button.addEventListener("click", async (event) => {
           const sellerId = event.currentTarget.id;
@@ -222,21 +216,18 @@ const renderSavedSellerPage = async (container) => {
         });
       });
 
-      // Close product catalog button event
       document
         .getElementById("closeCatalogButton")
         .addEventListener("click", () => {
           document.getElementById("sellerProductCatalog").style.display = "none";
         });
 
-      // Close review area button event
       document
         .getElementById("closeReviewButton")
         .addEventListener("click", () => {
           document.getElementById("sellerReviewArea").style.display = "none";
         });
 
-      // Add event listener for the dashboardCustomer button
       document.getElementById("dashboardCustomer").addEventListener("click", () => {
         window.location.href = "/dashboardCustomer";
       });
@@ -245,7 +236,6 @@ const renderSavedSellerPage = async (container) => {
         window.location.href = "/profileCustomer";
       });
 
-      // Event listener for submit review button
       document
         .getElementById("sellerReviewSubmit")
         .addEventListener("click", async () => {
@@ -279,14 +269,12 @@ const renderSavedSellerPage = async (container) => {
           }
         });
     } else {
-      // Handle the case where the user is not authenticated
       console.log("User is not authenticated");
       container.innerHTML = "<p>Please log in to view your saved sellers.</p>";
     }
   });
 };
 
-// Function to display seller products
 const displaySellerProducts = async (sellerId) => {
   const sellerDocRef = doc(db, "sellers", sellerId);
   const sellerDoc = await getDoc(sellerDocRef);
@@ -316,7 +304,6 @@ const displaySellerProducts = async (sellerId) => {
   document.getElementById("sellerProductCatalog").style.display = "block";
 };
 
-// Function to display seller reviews
 const displaySellerReviews = async (sellerId) => {
   const sellerDocRef = doc(db, "sellers", sellerId);
   const sellerDoc = await getDoc(sellerDocRef);
@@ -368,7 +355,6 @@ const toggleBookmarkSeller = async (sellerId) => {
   }
 };
 
-// Load saved sellers and update bookmark icons
 const loadSavedSellers = async () => {
   const user = auth.currentUser;
   if (user) {

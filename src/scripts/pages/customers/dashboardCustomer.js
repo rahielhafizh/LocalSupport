@@ -26,97 +26,96 @@ const db = getFirestore(firebaseApp);
 
 const renderDashboardCustomerPage = async (container) => {
   document.body.style.backgroundColor = "#f7f9ff";
-
   container.innerHTML = `
-  <main id="dashboardCustomerPage">
-    <header>
-      <div class="headerBar">
-        <div class="headerTitle">
-          <button class="sellersButton" id="profilePage">
-            <img src="${profileIcon}" alt="Profile Icon" />
-          </button>
-          <h1 id="customerName">LocalSupport</h1>
+    <main id="dashboardCustomerPage">
+      <header>
+        <div class="headerBar">
+          <div class="headerTitle">
+            <button class="sellersButton" id="profilePage">
+              <img src="${profileIcon}" alt="Profile Icon" />
+            </button>
+            <h1 id="customerName">LocalSupport</h1>
+          </div>
+          <div class="headerButton">
+            <button class="whiteButton" id="savedPage">
+              <a href="/savedSeller"></a>Disimpan
+            </button>
+          </div>
         </div>
-        <div class="headerButton">
-          <button class="whiteButton" id="savedPage">
-            <a href="/savedSeller"></a>Disimpan
-          </button>
-        </div>
-      </div>
-    </header>
+      </header>
 
-    <section class="sellerList" id="sellerList">
-      <div class="searchSellerArea" id="searchSellerArea">
-        <div class="searchSeller">
-          <input
-            type="text"
-            id="searchSeller"
-            name="searchSeller"
-            class="searchSellerInput"
-            placeholder="Temukan yang anda butuhkan" />
-          <button class="blueButton" id="searchSellerButton">Cari</button>
+      <section class="sellerList" id="sellerList">
+        <div class="searchSellerArea" id="searchSellerArea">
+          <div class="searchSeller">
+            <input
+              type="text"
+              id="searchSeller"
+              name="searchSeller"
+              class="searchSellerInput"
+              placeholder="Temukan yang anda butuhkan" />
+            <button class="blueButton" id="searchSellerButton">Cari</button>
+          </div>
+          <div class="sortArea" id="sortArea">
+            <label for="dropdown">Urutkan Penjual Berdasarkan</label>
+            <select id="sortListOption" name="dropdown" class="dropdownButton">
+              <option value="ascending" id="ascending">A-Z</option>
+              <option value="descending" id="descending">Z-A</option>
+            </select>
+            <button class="whiteButton" id="sortList">Urutkan</button>
+          </div>
         </div>
-        <div class="sortArea" id="sortArea">
-          <label for="dropdown">Urutkan Penjual Berdasarkan</label>
-          <select id="sortListOption" name="dropdown" class="dropdownButton">
-            <option value="ascending" id="ascending">A-Z</option>
-            <option value="descending" id="descending">Z-A</option>
-          </select>
-          <button class="whiteButton" id="sortList">Urutkan</button>
+
+        <div class="sellerListHeader" id="sellerListHeader">
+          <h1>Daftar Usaha Lokal</h1>
         </div>
-      </div>
 
-      <div class="sellerListHeader" id="sellerListHeader">
-        <h1>Daftar Usaha Lokal</h1>
-      </div>
-
-      <div class="sellerInformationArea">
-        <div class="sellerProductCatalog" id="sellerProductCatalog" style="display: none;">
-          <div class="sellerCatalogHeader" id="sellerCatalogHeader">
-            <h1 id="catalogMarketName">Nama Usaha</h1>
-            <div class="closeCatalog">
-              <button class="sellersButton" id="closeCatalogButton">
-                <img src="${closeIcon}" alt="Back Icon"/>
-              </button>
+        <div class="sellerInformationArea">
+          <div class="sellerProductCatalog" id="sellerProductCatalog" style="display: none;">
+            <div class="sellerCatalogHeader" id="sellerCatalogHeader">
+              <h1 id="catalogMarketName">Nama Usaha</h1>
+              <div class="closeCatalog">
+                <button class="sellersButton" id="closeCatalogButton">
+                  <img src="${closeIcon}" alt="Back Icon"/>
+                </button>
+              </div>
+            </div>
+            <div class="sellerProductList" id="sellerProductList">
+              <!-- Seller Products will be populated here -->
             </div>
           </div>
-          <div class="sellerProductList" id="sellerProductList">
-            <!-- Seller Products will be populated here -->
-          </div>
-        </div>
 
-        <div class="sellerReviewArea" id="sellerReviewArea" style="display: none;">
-          <div class="sellerReviewHeader" id="sellerReviewHeader">
-            <h1 id="reviewMarketName">Nama Usaha</h1>
-            <div class="closeCatalog">
-              <button class="sellersButton" id="closeReviewButton">
-                <img src="${closeIcon}" alt="Back Icon"/>
-              </button>
+          <div class="sellerReviewArea" id="sellerReviewArea" style="display: none;">
+            <div class="sellerReviewHeader" id="sellerReviewHeader">
+              <h1 id="reviewMarketName">Nama Usaha</h1>
+              <div class="closeCatalog">
+                <button class="sellersButton" id="closeReviewButton">
+                  <img src="${closeIcon}" alt="Back Icon"/>
+                </button>
+              </div>
+            </div>
+            <div class="sellerReviewList" id="sellerReviewList">
+              <!-- Seller Reviews will be populated here -->
+            </div>
+            <div class="sellerReviewPost" id="sellerReviewPost">
+              <textarea
+                id="reviewInput"
+                name="sellerReviewPost"
+                class="sellerReviewInput"
+                placeholder="Bagikan penilaian anda"></textarea>
+              <button class="blueButton" id="sellerReviewSubmit">Kirim</button>
             </div>
           </div>
-          <div class="sellerReviewList" id="sellerReviewList">
-            <!-- Seller Reviews will be populated here -->
-          </div>
-          <div class="sellerReviewPost" id="sellerReviewPost">
-            <textarea
-              id="reviewInput"
-              name="sellerReviewPost"
-              class="sellerReviewInput"
-              placeholder="Bagikan penilaian anda"></textarea>
-            <button class="blueButton" id="sellerReviewSubmit">Kirim</button>
-          </div>
         </div>
-      </div>
 
-      <div class="sellerListArea" id="sellerListArea">
-        <!-- Seller Area will be populated here -->
-      </div>
-    </section>
-  </main>
+        <div class="sellerListArea" id="sellerListArea">
+          <!-- Seller Area will be populated here -->
+        </div>
+      </section>
+    </main>
     <footer>
-        <div class="footerBar">
-            <h1>Platform Pendukung Usaha Lokal Indonesia</h1>
-        </div>
+      <div class="footerBar">
+        <h1>Platform Pendukung Usaha Lokal Indonesia</h1>
+      </div>
     </footer>
   `;
 

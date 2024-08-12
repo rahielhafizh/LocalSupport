@@ -23,7 +23,7 @@ body {
   background-color: var(--primary);
 }
 
-#loginCustomerPage {
+#loginSellerPage {
   min-height: 100vh;
   background-color: var(--primary);
   display: flex;
@@ -39,6 +39,7 @@ body {
 .mainArea {
   display: flex;
   justify-content: space-around;
+  min-height: 90vh;
 }
 
 .backButton {
@@ -213,6 +214,7 @@ body {
     flex-direction: column-reverse;
     align-items: center;
     justify-content: flex-start;
+    min-height: 100%;
     padding-top: 2rem;
   }
 

@@ -28,7 +28,6 @@ const db = getFirestore(firebaseApp);
 const storage = getStorage(firebaseApp);
 const auth = getAuth(firebaseApp);
 
-// Function to render product management page
 const renderProductManagementPage = (container) => {
   container.innerHTML = `
     <main id="productManagementPage">
@@ -198,12 +197,11 @@ const renderProductManagementPage = (container) => {
 
       renderProducts(user);
     } else {
-      // Redirect to login page or show an error
+      console.error("Terjadi kesalahan:");
     }
   });
 };
 
-// Function to fetch market name from Firestore
 const fetchMarketName = async (user) => {
   const userDocRef = doc(db, "sellers", user.uid);
   try {
@@ -217,7 +215,6 @@ const fetchMarketName = async (user) => {
   }
 };
 
-// Function to render products on the page
 const renderProducts = async (user) => {
   const productCatalog = document.querySelector(".productCatalog");
   productCatalog.innerHTML = "";
@@ -225,7 +222,6 @@ const renderProducts = async (user) => {
   try {
     const querySnapshot = await getDocs(collection(db, `sellers/${user.uid}/products`));
 
-    // Extract product data and sort by product name
     const products = querySnapshot.docs.map((doc) => ({
       id: doc.id,
       ...doc.data(),
@@ -233,7 +229,6 @@ const renderProducts = async (user) => {
 
     products.sort((a, b) => a.name.localeCompare(b.name));
 
-    // Render sorted products
     products.forEach((product) => {
       const productDetail = `
         <div class="productDetail" data-id="${product.id}">
@@ -255,7 +250,6 @@ const renderProducts = async (user) => {
   }
 };
 
-// Function to add product to Firestore
 const addProductToFirestore = async (
   user,
   productName,
@@ -264,32 +258,27 @@ const addProductToFirestore = async (
   productImage,
 ) => {
   try {
-    // Generate a unique ID for the image file
     const uniqueImageId = uuidv4();
     const imageRef = ref(storage, `products/${user.uid}/${uniqueImageId}-${productImage.name}`);
 
-    // Upload product image to storage
     await uploadBytes(imageRef, productImage);
     const imageUrl = await getDownloadURL(imageRef);
 
-    // Add product details to Firestore
     await addDoc(collection(db, `sellers/${user.uid}/products`), {
       name: productName,
       buyPrice: parseFloat(productBuyPrice),
       sellPrice: parseFloat(productSellPrice),
       imageUrl,
-      stock: 0, // Default stock value
+      stock: 0,
       createdAt: new Date(),
     });
-
-    alert("Product added successfully!");
+    alert("Produk berhasil ditambahkan");
     clearAddProductForm();
   } catch (error) {
     console.error("Terjadi kesalahan dalam menambahkan produk : ", error);
   }
 };
 
-// Function to handle update form with product data
 const handleUpdateForm = (product) => {
   document.getElementById("updateProductName").value = product.name;
   document.getElementById("updateProductBuyPrice").value = product.buyPrice;
@@ -300,7 +289,6 @@ const handleUpdateForm = (product) => {
     : "Gambar Produk";
 };
 
-// Function to handle edit product button click
 const handleEditProductClick = async (event) => {
   const user = auth.currentUser;
   const productId = event.target.closest(".productDetail").dataset.id;
@@ -316,7 +304,6 @@ const handleEditProductClick = async (event) => {
   }
 };
 
-// Function to handle update product button click
 const handleUpdateProductClick = async (event) => {
   const user = auth.currentUser;
   const { productId } = event.target.dataset;
@@ -329,7 +316,6 @@ const handleUpdateProductClick = async (event) => {
   try {
     let imageUrl = null;
     if (productImage) {
-      // Generate a unique ID for the image file
       const uniqueImageId = uuidv4();
       const storageRef = ref(
         storage,
@@ -339,23 +325,33 @@ const handleUpdateProductClick = async (event) => {
       imageUrl = await getDownloadURL(storageRef);
     }
 
-    await updateDoc(productRef, {
+    const updatedData = {
       name: productName,
       buyPrice: parseFloat(productBuyPrice),
       sellPrice: parseFloat(productSellPrice),
       ...(imageUrl && { imageUrl }),
       updatedAt: new Date(),
-    });
+    };
 
-    alert("Product updated successfully!");
+    await updateDoc(productRef, updatedData);
+
+    alert("Produk berhasil diperbarui");
+
+    const productDetailElement = document.querySelector(`.productDetail[data-id="${productId}"]`);
+    if (productDetailElement) {
+      productDetailElement.querySelector("h1").textContent = updatedData.name;
+      productDetailElement.querySelector("#productBuyPrice").textContent = updatedData.buyPrice;
+      productDetailElement.querySelector("h2:nth-child(4)").textContent = updatedData.sellPrice;
+      if (updatedData.imageUrl) {
+        productDetailElement.querySelector("img").src = updatedData.imageUrl;
+      }
+    }
     clearUpdateProductForm();
-    renderProducts(user);
   } catch (error) {
     console.error("Terjadi kesalahan dalam memperbarui produk:", error);
   }
 };
 
-// Function to handle delete product button click
 const handleDeleteProductClick = async (event) => {
   const user = auth.currentUser;
   const productId = event.target.closest(".productDetail").dataset.id;
@@ -363,14 +359,13 @@ const handleDeleteProductClick = async (event) => {
 
   try {
     await deleteDoc(productRef);
-    alert("Product deleted successfully!");
+    alert("Produk berhasil dihapus");
     renderProducts(user);
   } catch (error) {
     console.error("Terjadi kesalahan dalam menghapus produk: ", error);
   }
 };
 
-// Function to handle file input change and update label text
 const handleFileInputChange = (event) => {
   const fileInput = event.target;
   const label = fileInput.previousElementSibling;
@@ -381,7 +376,6 @@ const handleFileInputChange = (event) => {
   }
 };
 
-// Function to handle search product button click
 const handleSearchProduct = async () => {
   const user = auth.currentUser;
   const searchKeyword = document.getElementById("searchProduct").value.trim().toLowerCase();
@@ -396,7 +390,6 @@ const handleSearchProduct = async () => {
       const product = doc.data();
       const productName = product.name.toLowerCase();
 
-      // Check if the search keyword is in the product name
       if (productName.includes(searchKeyword)) {
         const productDetail = `
             <div class="productDetail" data-id="${doc.id}">
@@ -422,7 +415,6 @@ const handleSearchProduct = async () => {
   }
 };
 
-// Function to clear add product form inputs
 const clearAddProductForm = () => {
   document.getElementById("productName").value = "";
   document.getElementById("productBuyPrice").value = "";
@@ -431,7 +423,6 @@ const clearAddProductForm = () => {
   document.getElementById("productImageName").textContent = "Gambar Produk";
 };
 
-// Function to clear update product form inputs
 const clearUpdateProductForm = () => {
   document.getElementById("updateProductName").value = "";
   document.getElementById("updateProductBuyPrice").value = "";

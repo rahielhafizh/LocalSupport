@@ -1,4 +1,3 @@
-// Import styles and Firebase modules
 import "../../../styles/stockManagement.css";
 import { initializeApp } from "firebase/app";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
@@ -13,19 +12,15 @@ import {
 import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import firebaseConfig from "../../common/config";
 
-// Importing image and icon assets for stock management page
 import profileIcon from "../../../public/icons/profile-icon.svg";
 import cartIcon from "../../../public/icons/cart-icon.svg";
 import menuIcon from "../../../public/icons/menu-icon.svg";
 
-// Initialize Firebase app and services
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
 
-// Function to render the seller's restock page
 const renderStockManagementPage = (container) => {
-  // Set the HTML structure for the restock page
   container.innerHTML = `
     <main id="stockManagementPage">
         <header>
@@ -51,7 +46,6 @@ const renderStockManagementPage = (container) => {
                 </div>
             </div>
         </header>
-
         <section class="mainControlArea">
             <div class="mainDevelopment">
                 <div class="dateDevelopmentArea">
@@ -106,11 +100,9 @@ const renderStockManagementPage = (container) => {
     </footer>
   `;
 
-  // Initialize empty arrays to hold products and cart items
   let products = [];
   let cart = {};
 
-  // Function to load seller products from Firestore
   const loadSellerProducts = async (userId) => {
     try {
       const products = [];
@@ -127,12 +119,10 @@ const renderStockManagementPage = (container) => {
     }
   };
 
-  // Function to display products on the restock
   const displayProducts = (products) => {
     const productListArea = container.querySelector("#productListArea");
     productListArea.innerHTML = "";
 
-    // Sort products by name A-Z
     products.sort((a, b) => a.name.localeCompare(b.name));
 
     products.forEach((product) => {
@@ -153,7 +143,6 @@ const renderStockManagementPage = (container) => {
       `;
       productListArea.insertAdjacentHTML("beforeend", productHTML);
 
-      // Mark product with zero stock
       if (product.stock === 0) {
         const productElement = productListArea.querySelector(`.productSelection[data-product-id="${product.id}"]`);
         const stockAmountElement = productElement.querySelector("#stockAmount");
@@ -162,7 +151,6 @@ const renderStockManagementPage = (container) => {
       }
     });
 
-    // Add event listeners for "Tambah" and "Hapus" buttons
     productListArea
       .querySelectorAll(".addRestockCartProduct")
       .forEach((button) => {
@@ -172,6 +160,7 @@ const renderStockManagementPage = (container) => {
           showCart();
         });
       });
+
     productListArea
       .querySelectorAll(".reduceRestockCartProduct")
       .forEach((button) => {
@@ -197,7 +186,6 @@ const renderStockManagementPage = (container) => {
     }
   });
 
-  // Function to add a product to the cart
   const addProductToCart = (productId) => {
     if (!cart[productId]) {
       const product = products.find((p) => p.id === productId);
@@ -214,7 +202,6 @@ const renderStockManagementPage = (container) => {
     showCart();
   };
 
-  // Function to reduce a product from the cart
   const reduceProductFromCart = (productId) => {
     if (cart[productId]) {
       cart[productId].quantity -= 1;
@@ -226,7 +213,6 @@ const renderStockManagementPage = (container) => {
     showCart();
   };
 
-  // Function to update the cart display on the Restock Page
   const updateCartDisplay = () => {
     const restockCartProducts = container.querySelector("#restockCartProduct");
     const restockCartTotalPrice = container.querySelector(
@@ -239,7 +225,6 @@ const renderStockManagementPage = (container) => {
     let totalPrice = 0;
     let totalProducts = 0;
 
-    // Iterate over cart items to update total price and product count
     Object.keys(cart).forEach((productId) => {
       const product = products.find((p) => p.id === productId);
       const productQuantity = cart[productId].quantity;
@@ -247,7 +232,6 @@ const renderStockManagementPage = (container) => {
       totalPrice += productTotalPrice;
       totalProducts += productQuantity;
 
-      // Add cart items to the display
       const cartProductHTML = `
         <div class="restockCartProduct">
             <img src="${product.imageUrl || "../../../public/images/dummyImage.jpg"}" alt="${product.name}" />
@@ -264,18 +248,15 @@ const renderStockManagementPage = (container) => {
       restockCartProducts.insertAdjacentHTML("beforeend", cartProductHTML);
     });
 
-    // Update total price and product count in the cart display
     restockCartTotalPrice.textContent = totalPrice;
     restockCartTotalProduct.textContent = totalProducts;
   };
 
-  // Function to reset the cart
   const resetCart = () => {
     cart = {};
     updateCartDisplay();
   };
 
-  // Function to confirm the cart and save the transaction to Firestore
   const confirmCart = async (userId) => {
     const restockDate = container.querySelector("#restockDate").value;
     const formattedDate = restockDate.split("-").reverse().join("-");
@@ -289,22 +270,18 @@ const renderStockManagementPage = (container) => {
 
       let transactionsOutcome = [];
 
-      // Check if there are existing transactions for the given date
       if (transactionsSnap.exists() && transactionsSnap.data().transactionsOutcomeProducts) {
         transactionsOutcome = transactionsSnap.data().transactionsOutcomeProducts;
       }
 
-      // Iterate over cart items and add them to transactionsOutcome
       Object.keys(cart).forEach((productId) => {
         const cartItem = cart[productId];
         const existingTransactionIndex = transactionsOutcome.findIndex(
           (transaction) => transaction.productId === productId,
         );
         if (existingTransactionIndex >= 0) {
-          // If product already exists in transactionsOutcome, update its quantity
           transactionsOutcome[existingTransactionIndex].quantity += cartItem.quantity;
         } else {
-          // If product does not exist, add it to transactionsOutcome
           transactionsOutcome.push({
             productId,
             quantity: cartItem.quantity,
@@ -315,7 +292,6 @@ const renderStockManagementPage = (container) => {
         }
       });
 
-      // Update stock in Firestore
       await Promise.all(Object.keys(cart).map(async (productId) => {
         const productRef = doc(db, `sellers/${userId}/products`, productId);
         const productSnap = await getDoc(productRef);
@@ -327,7 +303,6 @@ const renderStockManagementPage = (container) => {
         }
       }));
 
-      // Save updated transactionsOutcome back to Firestore
       await setDoc(transactionsRef, { transactionsOutcomeProducts: transactionsOutcome });
       alert("Pembelian berhasil dikonfirmasi!");
       resetCart();
@@ -344,13 +319,11 @@ const renderStockManagementPage = (container) => {
     }
   };
 
-  // Function to load and display products for the seller
   const loadAndDisplayProducts = async (userId) => {
     products = await loadSellerProducts(userId);
     displayProducts(products);
   };
 
-  // Function to load and display market name
   const loadAndDisplayMarketName = async (userId) => {
     try {
       const userDoc = await getDoc(doc(db, "sellers", userId));
@@ -363,7 +336,6 @@ const renderStockManagementPage = (container) => {
     }
   };
 
-  // Function to update the restock date and save it to Firestore
   const handleUpdateRestockDate = async (userId) => {
     const restockDate = container.querySelector("#restockDate").value;
     const formattedDate = restockDate.split("-").reverse().join("-");
@@ -385,7 +357,6 @@ const renderStockManagementPage = (container) => {
     }
   };
 
-  // Function to save today's date if it does not exist in Firestore
   const saveTodayDateIfNotExists = async (userId) => {
     const today = new Date().toISOString().split("T")[0];
     const formattedDate = today.split("-").reverse().join("-");
@@ -405,7 +376,6 @@ const renderStockManagementPage = (container) => {
     }
   };
 
-  // Function to search for products by name
   const searchProduct = () => {
     const searchProductInput = container
       .querySelector("#searchProduct")
@@ -419,19 +389,11 @@ const renderStockManagementPage = (container) => {
     .querySelector("#searchProductButton")
     .addEventListener("click", searchProduct);
 
-  // Function to handle navigation
-  const navigateTo = (path) => {
-    window.history.pushState({}, "", path);
-    window.dispatchEvent(new Event("popstate"));
-  };
-
-  // Add event listeners for update restock date buttons
   container.querySelector("#updateRestockDate").addEventListener("click", async () => {
     const userId = auth.currentUser.uid;
     await handleUpdateRestockDate(userId);
   });
 
-  // Add event listeners for open restock cart buttons
   container.querySelector("#openCartButton").addEventListener("click", () => {
     const restockCartArea = container.querySelector("#restockCartArea");
     restockCartArea.style.display = restockCartArea.style.display === "none" ? "block" : "none";
@@ -462,7 +424,6 @@ const renderStockManagementPage = (container) => {
     window.location.href = "/profileSeller";
   });
 
-  // Listen for authentication state changes and load data accordingly
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const userId = user.uid;

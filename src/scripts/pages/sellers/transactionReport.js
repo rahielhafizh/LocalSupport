@@ -19,7 +19,6 @@ const db = getFirestore(firebaseApp);
 
 const dateRange = { startDate: '', endDate: '' };
 
-// Function to render the seller's dashboard page
 const renderTransactionReportPage = (container) => {
   container.innerHTML = `
   <main id="transactionReportPage">
@@ -248,13 +247,10 @@ const renderTransactionReportPage = (container) => {
   </footer>
 `;
 
-  // Add an authentication state observer
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      // User is signed in, fetch and display market name
       fetchAndDisplayMarketName(user);
     } else {
-      // No user is signed in
       console.error("Tidak ada pengguna yang terautentikasi.");
     }
   });
@@ -262,7 +258,6 @@ const renderTransactionReportPage = (container) => {
   document.getElementById("confirmDateRange").addEventListener("click", applyDateRange);
   document.getElementById("resetDateRange").addEventListener("click", resetDateRange);
 
-  // Fungsi untuk headerButton
   document.getElementById("productPage").addEventListener("click", () => {
     window.location.href = '/productManagement';
   });
@@ -286,7 +281,6 @@ const renderTransactionReportPage = (container) => {
   });
 };
 
-// Function to fetch seller data and display market name
 const fetchAndDisplayMarketName = async () => {
   try {
     const user = auth.currentUser;

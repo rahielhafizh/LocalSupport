@@ -87,6 +87,7 @@ const renderLoginCustomer = (container) => {
   });
 
   const loginForm = container.querySelector('#loginForm');
+
   loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
 

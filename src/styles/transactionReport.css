@@ -344,6 +344,7 @@ main {
     gap: 10px;
     width: 100%;
     font-size: 18px;
+    text-align: center;
   }
 
   .inputDate {
@@ -351,6 +352,7 @@ main {
     width: 100%;
     outline: 2px solid var(--primary);
     font-size: 12px;
+    text-align: center;
   }
 
   .sectionTitle {

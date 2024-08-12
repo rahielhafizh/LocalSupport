@@ -32,7 +32,7 @@ const renderSavedSellerPage = async (container) => {
   <header>
     <div class="headerBar">
       <div class="headerTitle">
-        <button class="sellerButton" id="profilePage">
+        <button class="sellersButton" id="profilePage">
           <img src=${profileIcon} alt="Profile Icon" />
         </button>
         <h1 id="customerName">Loading</h1>
@@ -55,7 +55,7 @@ const renderSavedSellerPage = async (container) => {
       <div class="sellerCatalogHeader" id="sellerCatalogHeader">
         <h1 id="catalogMarketName">Nama Usaha</h1>
         <div class="closeCatalog">
-          <button class="sellerButton" id="closeCatalogButton">
+          <button class="sellersButton" id="closeCatalogButton">
             <img src=${closeIcon} alt="Back Icon" />
           </button>
         </div>
@@ -69,7 +69,7 @@ const renderSavedSellerPage = async (container) => {
       <div class="sellerReviewHeader" id="sellerReviewHeader">
         <h1 id="reviewMarketName">Nama Usaha</h1>
         <div class="closeCatalog">
-          <button class="sellerButton" id="closeReviewButton">
+          <button class="sellersButton" id="closeReviewButton">
             <img src=${closeIcon} alt="Back Icon" />
           </button>
         </div>

@@ -187,6 +187,7 @@ main {
   font-weight: 400;
   font-size: 16px;
   color: var(--primary);
+  text-align: center;
 }
 
 .dashboardInput:focus {
@@ -195,6 +196,15 @@ main {
 
 .dashboardInput:focus::placeholder {
   opacity: 0;
+}
+
+input[type="date"]::-webkit-datetime-edit-text,
+input[type="date"]::-webkit-datetime-edit-month-field,
+input[type="date"]::-webkit-datetime-edit-day-field,
+input[type="date"]::-webkit-datetime-edit-year-field {
+  text-align: center;
+  color: var(--primary);
+  background-color: var(--subTwo);
 }
 
 .titleControlArea {
@@ -463,6 +473,10 @@ main {
     text-align: center;
   }
 
+  input[type="date"] {
+    text-align: center;
+  }
+
   .titleControlArea {
     display: none;
   }
@@ -553,9 +567,9 @@ main {
   }
 
   .sellerButton {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 10px;
+    width: 2.5rem !important;
+    height: 2.5rem !important;
+    border-radius: 5px;
     font-family: var(--Poppins);
     font-weight: 600;
     font-size: 20px;

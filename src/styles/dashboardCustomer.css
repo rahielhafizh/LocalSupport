@@ -173,7 +173,7 @@ html {
   justify-content: space-between;
   padding: 1rem 1.5rem 1rem 1.5rem;
   height: 17rem;
-  width: 33rem;
+  width: 100%;
   border-radius: 15px;
   position: relative;
   overflow: hidden;
@@ -551,13 +551,12 @@ html {
     text-align: start;
   }
 
-
   .sellerListHeader h1 {
-    font-size: 18px;
+    font-size: 14px;
   }
 
   .sellerLocation h2 {
-    font-size: 7px;
+    font-size: 10px;
     font-weight: 400;
     text-align: justify;
     height: auto;
@@ -589,8 +588,8 @@ html {
   }
 
   .sellersButton {
-    width: 2.5rem;
-    height: 2rem;
+    width: 2rem;
+    height: 1.5rem;
     border-radius: 5px;
   }
 
@@ -610,21 +609,21 @@ html {
   }
 
   .sellerReviewArea {
-    width: 25rem;
+    width: 23.5rem;
     padding: 10px 15px;
     margin: 0 1.5rem;
     border-radius: 15px;
   }
 
   .sellerProductCatalog {
-    width: 25rem;
+    width: 23.5rem;
     padding: 10px 15px;
     margin: 0 1.5rem;
     border-radius: 15px;
   }
 
   .sellerReviewPost {
-    margin: 1rem .5rem 0 .5rem;
+    margin: 1rem 0.5rem 0 0.5rem;
   }
 
   .sellerReviewList {
@@ -665,6 +664,7 @@ html {
     grid-column-gap: 0.5rem;
     grid-row-gap: 0.5rem;
     max-height: 15rem;
+    width: 100%;
     overflow-y: auto;
   }
 

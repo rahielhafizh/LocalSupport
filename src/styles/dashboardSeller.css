@@ -46,12 +46,17 @@ main {
 .headerTitle,
 .stockAmount,
 .dashboardCartTotal,
-.productButton,
 .dashboardCartProductAmount {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+}
+
+.productButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .dashboardCartCalculation,
@@ -107,8 +112,8 @@ main {
   padding: 1rem 2rem;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(1, 1fr);
-  grid-column-gap: 2rem;
-  grid-row-gap: 2rem;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
   justify-items: stretch;
   align-items: center;
 }
@@ -118,19 +123,19 @@ main {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem .5rem 1rem;
   height: 27rem;
   width: 100%;
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-  background-color: var(--subTwo);
+  background-color: var(--subThree);
   color: var(--primary);
   border: 2px solid var(--primary);
 }
 
 .productSelection img {
-  height: 12rem;
+  height: 13rem;
   width: 100%;
   border: 1px solid var(--primary);
   border-radius: 10px;
@@ -397,8 +402,12 @@ main {
     padding: 15px;
   }
 
+  .headerTitle {
+    gap: 5px;
+  }
+
   .headerTitle h1 {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .footerBar {
@@ -407,10 +416,6 @@ main {
 
   .footerBar h1 {
     font-size: 14px;
-  }
-
-  .headerTitle {
-    gap: 10px;
   }
 
   .headerButton {
@@ -450,10 +455,12 @@ main {
     border-radius: 3px;
     font-size: 12px;
     color: var(--primary);
+    text-align: center;
   }
 
   .dashboardInput::placeholder {
     font-size: 12px;
+    text-align: center;
   }
 
   .titleControlArea {
@@ -470,7 +477,7 @@ main {
   }
 
   .productSelection {
-    padding: 0.5rem;
+    padding: 1rem !important;
     height: 17rem;
     width: 100%;
     border-radius: 10px;
@@ -566,13 +573,14 @@ main {
   }
 
   .productButton {
-    gap: 5px;
+    gap: 5px !important;
   }
 
-  .blueButton {
+  .blueButton,
+  .whiteButton {
     padding: 10px;
-    width: 5.5rem;
-    height: 2.5rem;
+    width: 5.2rem !important;
+    height: 2.2rem !important;
     border-radius: 7px;
     font-size: 12px;
   }

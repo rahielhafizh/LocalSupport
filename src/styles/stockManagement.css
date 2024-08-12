@@ -21,7 +21,6 @@ body,
 html {
   height: 100%;
   margin: 0;
-  background-color: var(--subTwo);
 }
 
 #stockManagementPage {
@@ -47,12 +46,17 @@ main {
 .headerTitle,
 .stockAmount,
 .restockCartTotal,
-.productButton,
 .restockCartProductAmount {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
+}
+
+.productButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .restockCartCalculation,
@@ -61,6 +65,10 @@ main {
   align-items: center;
   justify-content: center;
   gap: 2rem;
+}
+
+#openNavigation {
+  display: none;
 }
 
 .headerTitle h1 {
@@ -80,8 +88,8 @@ main {
   display: flex;
   justify-content: space-around;
   background-color: var(--mainTwo);
-  width: 90%;
-  margin: 3rem 2rem 1rem 2rem;
+  width: 100%;
+  margin: 3rem 2rem;
   padding: 3rem;
   border: 2px solid var(--primary);
   border-radius: 25px;
@@ -90,14 +98,13 @@ main {
 .dateDevelopmentArea,
 .searchProductArea {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
-  background-color: var(--subThree);
+  background-color: var(--subTwo);
   padding: 2rem;
-  gap: 2rem;
+  gap: 1rem;
   border-radius: 20px;
   border: 1px solid var(--primary);
-  width: 45%;
 }
 
 .productListArea {
@@ -105,8 +112,8 @@ main {
   padding: 1rem 2rem;
   grid-template-columns: repeat(5, 1fr);
   grid-template-rows: repeat(1, 1fr);
-  grid-column-gap: 2rem;
-  grid-row-gap: 2rem;
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem;
   justify-items: stretch;
   align-items: center;
 }
@@ -116,7 +123,7 @@ main {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 1.5rem;
+  padding: 1rem 1rem .5rem 1rem;
   height: 27rem;
   width: 100%;
   border-radius: 20px;
@@ -135,6 +142,10 @@ main {
   object-fit: cover;
 }
 
+.restockCartProductDetail {
+  width: 15rem;
+}
+
 .productSelection h1,
 .restockCartTitle h1,
 .restockCartProductDetail h1 {
@@ -150,7 +161,7 @@ main {
 .restockCartProductAmount h1,
 .restockCartTotal h1 {
   font-family: var(--OpenSans);
-  font-weight: 500;
+  font-weight: 400;
   font-size: 18px;
   color: var(--primary);
 }
@@ -251,6 +262,30 @@ main {
   cursor: pointer;
 }
 
+.sellerButton img {
+  height: 2.5rem;
+  width: 2.5rem;
+  object-fit: cover;
+}
+
+.profileButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-radius: 15px;
+  width: 7rem;
+  height: 2rem;
+  font-family: var(--Poppins);
+  font-weight: 600;
+  font-size: 20px;
+  position: relative;
+  overflow: hidden;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+  box-sizing: border-box;
+}
+
 .whiteButton:active,
 .blueButton:active,
 .sellerButton:active {
@@ -272,12 +307,21 @@ main {
   border-radius: 0 0 0 20px;
 }
 
+.cartProductContainer {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
 .restockCartTitle {
-  background-color: var(--subTwo);
   border-bottom: 1px solid var(--primary);
+  background-color: var(--subTwo);
   text-align: center;
   padding-bottom: 1rem;
   margin-bottom: 1rem;
+}
+
+.restockCartProductDetail {
+  width: 15rem;
 }
 
 .restockCartProduct {
@@ -291,23 +335,18 @@ main {
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
-.restockCartProductDetail {
-  width: 15rem;
-}
-
 .restockCartProduct img {
   height: 5rem;
   width: 5rem;
-  border: 1px solid var(--primary);
   border-radius: 10px;
   object-fit: cover;
 }
 
 .restockCartFooter {
-  background-color: var(--subTwo);
   display: flex;
   flex-direction: column;
   border-top: 1px solid var(--primary);
+  background-color: var(--subTwo);
   border-radius: 0 0 0 20px;
   padding: 1rem;
 }
@@ -363,8 +402,12 @@ main {
     padding: 15px;
   }
 
+  .headerTitle {
+    gap: 5px;
+  }
+
   .headerTitle h1 {
-    font-size: 20px;
+    font-size: 16px;
   }
 
   .footerBar {
@@ -373,10 +416,6 @@ main {
 
   .footerBar h1 {
     font-size: 14px;
-  }
-
-  .headerTitle {
-    gap: 10px;
   }
 
   .headerButton {
@@ -409,17 +448,19 @@ main {
     border: 1px solid var(--primary);
   }
 
-  .restockInput {
+  .stockInput {
     margin: 5px;
     height: 2rem;
     width: 100%;
     border-radius: 3px;
     font-size: 12px;
     color: var(--primary);
+    text-align: center;
   }
 
-  .restockInput::placeholder {
+  .stockInput::placeholder {
     font-size: 12px;
+    text-align: center;
   }
 
   .titleControlArea {
@@ -535,7 +576,8 @@ main {
     gap: 5px;
   }
 
-  .blueButton {
+  .blueButton,
+  .whiteButton {
     padding: 10px;
     width: 5.5rem;
     height: 2.5rem;

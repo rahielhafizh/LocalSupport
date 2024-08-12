@@ -315,19 +315,33 @@ main {
 
 @media screen and (max-width: 900px) {
 
+  .headerBar {
+    display: flex;
+    height: 4rem;
+    padding: 15px;
+  }
+
+  .headerTitle {
+    gap: 5px;
+  }
+
+  .headerTitle h1 {
+    font-size: 16px;
+  }
+ 
   .transactionReportHome {
-    padding: 1rem !important;
-    gap: 5px !important;
+    padding: 1rem;
+    gap: 5px;
   }
 
   .reportsDateArea {
     flex-direction: column;
     justify-content: space-between;
-    width: 100% !important;
+    width: 100%;
   }
 
   .inputDateArea {
-    gap: 10px !important;
+    gap: 10px;
     width: 100%;
     font-size: 18px;
   }
@@ -340,7 +354,7 @@ main {
   }
 
   .sectionTitle {
-    padding: 0 !important;
+    padding: 0;
   }
 
   .sectionTitle h1 {
@@ -361,7 +375,7 @@ main {
     display: flex;
     flex-flow: column nowrap;
     width: 100%;
-    margin: 1rem 0 !important;
+    margin: 1rem 0;
   }
 
   .transactionIncomeProductReportArea,
@@ -369,7 +383,7 @@ main {
     display: none;
     flex-flow: column nowrap;
     width: 100%;
-    margin: 1rem 0 !important;
+    margin: 1rem 0;
   }
 
   .transactionIncomeReportTitle h1,

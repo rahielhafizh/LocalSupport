@@ -214,59 +214,59 @@ body {
 
 @media screen and (max-width: 900px) {
   .headerBar {
-    display: flex !important;
-    height: 4rem !important;
-    padding: 15px !important;
+    display: flex;
+    height: 4rem;
+    padding: 15px;
   }
 
   .headerTitle h1 {
-    font-size: 20px !important;
+    font-size: 16px;
   }
 
   .introductionSectionArea {
-    flex-direction: column-reverse !important;
-    padding: 1rem !important;
-    text-align: center !important;
+    flex-direction: column-reverse;
+    padding: 1rem;
+    text-align: center;
   }
 
   .introductionGreeting h1 {
-    font-size: 24px !important;
+    font-size: 24px;
   }
 
   .introductionGreeting h2 {
-    display: none !important;
+    display: none;
   }
 
   .introductionImage {
-    width: 50% !important;
-    height: auto !important;
-    padding: 1rem !important;
+    width: 50%;
+    height: auto;
+    padding: 1rem;
   }
 
   .introductionImage img {
-    height: auto !important;
-    width: 100% !important;
+    height: auto;
+    width: 100%;
   }
 
   .featureHeader {
-    display: none !important;
+    display: none;
   }
 
   .featureCardList {
-    grid-template-columns: 1fr !important;
-    padding: 1rem !important;
-    gap: 10px !important;
+    grid-template-columns: 1fr;
+    padding: 1rem;
+    gap: 10px;
   }
 
   .featureCard {
-    width: 100% !important;
-    height: auto !important;
-    padding: 10px !important;
-    border-radius: 15px !important;
+    width: 100%;
+    height: auto;
+    padding: 10px;
+    border-radius: 15px;
   }
 
   .featureDescription {
-    gap: 3px !important;
+    gap: 3px;
   }
 
   .featureDescription img {
@@ -274,25 +274,25 @@ body {
   }
 
   .featureDescription h1 {
-    font-size: 16px !important;
-    text-align: center !important;
+    font-size: 16px;
+    text-align: center;
   }
 
   .featureDescription h2 {
-    font-size: 12px !important;
-    width: 85% !important;
-    text-align: center !important;
+    font-size: 12px;
+    width: 85%;
+    text-align: center;
   }
 
   .headerButtonArea {
-    gap: 3px !important;
+    gap: 3px;
   }
 
   .whiteButton {
-    padding: 10px !important;
-    width: 5.5rem !important;
-    height: 2.5rem !important;
-    border-radius: 7px !important;
-    font-size: 12px !important;
+    padding: 10px;
+    width: 5.5rem;
+    height: 2.5rem;
+    border-radius: 7px;
+    font-size: 12px;
   }
 }

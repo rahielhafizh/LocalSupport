@@ -157,48 +157,49 @@ body {
 
 @media screen and (max-width: 900px) {
   .mainHeader {
-    padding-left: 1rem !important;
+    padding-left: 1rem;
   }
 
   .profileManagementArea {
-    padding: 3rem 2rem !important;
-    margin: 2rem 0 !important;
-    border-radius: 2rem !important;
-    max-width: 90% !important;
-    gap: 5px !important;
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+    border-radius: 2rem;
+    max-width: 90%;
+    gap: 5px;
   }
 
   .profileManagementArea h1 {
-    font-size: 20px !important;
+    font-size: 20px;
   }
 
   .loginHeadline {
-    display: none !important;
+    display: none;
   }
 
   .loginForm {
-    gap: 2px !important;
+    gap: 2px;
   }
 
   .formLabel label {
-    font-size: 16px !important;
+    font-size: 16px;
   }
 
   .input {
-    height: 2rem !important;
+    height: 2rem;
     border-radius: 5px;
-    font-size: 14px !important;
+    font-size: 14px;
   }
 
   .locationInput {
-    font-size: 14px !important;
+    font-size: 14px;
   }
 
-  .blueButton {
-    padding: 10px !important;
-    width: 5.5rem !important;
-    height: 2.5rem !important;
-    border-radius: 7px !important;
-    font-size: 12px !important;
+  .blueButton,
+  .whiteButton {
+    padding: 10px;
+    width: 5.5rem;
+    height: 2.5rem;
+    border-radius: 7px;
+    font-size: 12px;
   }
 }

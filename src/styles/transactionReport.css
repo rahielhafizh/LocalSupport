@@ -132,19 +132,6 @@ main {
 }
 
 .inputLabel {
-  position: absolute;
-  top: 50%;
-  left: 1rem;
-  transform: translateY(-50%);
-  font-family: var(--Poppins);
-  font-weight: 400;
-  font-size: 12px;
-  color: var(--primary);
-  pointer-events: none;
-  transition: all 0.2s ease-in-out;
-}
-
-.inputDate:valid + .inputLabel {
   display: none;
 }
 
@@ -383,12 +370,20 @@ main {
 
   .inputLabel {
     display: flex;
+    position: absolute;
+    top: 50%;
+    left: 1rem;
+    transform: translateY(-50%);
     font-family: var(--Poppins);
     font-weight: 400;
     font-size: 12px;
     color: var(--primary);
-    text-align: center;
-    margin-bottom: 5px;
+    pointer-events: none;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .inputDate:valid+.inputLabel {
+    display: none;
   }
 
   .sectionTitle {

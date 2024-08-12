@@ -18,11 +18,13 @@
 }
 
 body {
+  height: 100%;
   background-color: var(--primary);
 }
 
 #registerCustomerPage {
   min-height: 100vh;
+  background-color: var(--primary);
   display: flex;
   flex-direction: column;
 }
@@ -37,6 +39,7 @@ body {
   display: flex;
   justify-content: space-around;
 }
+
 
 .backButton {
   border: none;

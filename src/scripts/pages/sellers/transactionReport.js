@@ -45,23 +45,29 @@ const renderTransactionReportPage = (container) => {
       </header>
 
       <section class="transactionReportHome">
-      <div class="reportsDateArea">
-  <div class="inputDateArea">
-    <div class="inputGroup">
-      <input type="date" id="startDate" name="startDate" class="inputDate" />
-      <label for="startDate" class="inputLabel">Masukkan Tanggal Awal</label>
-    </div>
-    <h1>-</h1>
-    <div class="inputGroup">
-      <input type="date" id="endDate" name="endDate" class="inputDate" />
-      <label for="endDate" class="inputLabel">Masukkan Tanggal Akhir</label>
-    </div>
-  </div>
-  <div class="headerButton" id="dateButton">
-    <button class="blueButton" id="confirmDateRange">Terapkan</button>
-    <button class="whiteButton" id="resetDateRange">Reset</button>
-  </div>
-</div>
+          <div class="reportsDateArea">
+                <div class="inputLabelArea">
+                    <h1>Tanggal Awal</h1>
+                    <h1>-</h1>
+                    <h1>Tanggal Akhir</h1>
+                </div>
+                <div class="inputDateArea">
+                    <input
+                        type="date" id="startDate"
+                        name="startDate" class="inputDate"/>
+                    <h1>-</h1>
+                    <input
+                        type="date" id="endDate"
+                        name="endDate" class="inputDate"/>
+                </div>
+              <div class="dateButton" id="dateButton">
+                  <button class="blueButton"
+                    id="confirmDateRange">Terapkan</button>
+                  <button class="whiteButton"
+                    id="resetDateRange">Reset</button>
+              </div>
+          </div>
+
           <section class="transactionIncomeArea" id="transactionIncomeArea">
               <div class="sectionTitle">
                   <h1>Laporan Transaksi Pemasukan</h1>

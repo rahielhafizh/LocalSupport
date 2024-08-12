@@ -19,10 +19,13 @@
 }
 
 body {
+  height: 100%;
   background-color: var(--primary);
 }
 
-#loginSellerPage {
+#loginCustomerPage {
+  min-height: 100vh;
+  background-color: var(--primary);
   display: flex;
   flex-direction: column;
 }
@@ -34,10 +37,8 @@ body {
 }
 
 .mainArea {
-  min-height: 90vh;
   display: flex;
   justify-content: space-around;
-  align-items: center;
 }
 
 .backButton {
@@ -204,26 +205,27 @@ body {
 }
 
 @media screen and (max-width: 900px) {
-  .mainArea {
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: center;
-  }
-
   .mainHeader {
     padding-left: 1rem;
   }
 
+  .mainArea {
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    padding-top: 2rem;
+  }
+
   .loginSeller {
     padding: 3rem 2rem;
-    margin: 2rem 0;
+    margin: 0;
     border-radius: 2rem;
     max-width: 90%;
     gap: 5px;
   }
 
   .loginSeller h1 {
-    font-size: 22px;
+    font-size: 20px;
   }
 
   .loginHeadline {
@@ -246,6 +248,7 @@ body {
 
   .loginContainer p {
     font-size: 14px;
+    margin-top: 1rem;
   }
 
   .blueButton,

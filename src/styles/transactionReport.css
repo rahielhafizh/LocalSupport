@@ -57,8 +57,7 @@ main {
   color: var(--subTwo);
 }
 
-.productButton,
-.headerButton {
+.dateButton {
   display: flex;
   gap: 1rem;
 }
@@ -69,6 +68,10 @@ main {
   justify-content: center;
   gap: 2rem;
   width: 100%;
+}
+
+.inputLabelArea {
+  display: none;
 }
 
 .transactionReportHome {
@@ -96,8 +99,8 @@ main {
   background-color: var(--subThree);
   padding: 1rem 2rem;
   margin: 0 3rem 1rem 3rem;
-  gap: 2rem;
-  border-radius: 10px;
+  gap: 1.5rem;
+  border-radius: 15px;
   border: 2px solid var(--primary);
   width: 100rem;
   font-family: var(--Poppins);
@@ -124,15 +127,6 @@ main {
 
 .inputDate:focus {
   outline-offset: 5px;
-}
-
-.inputGroup {
-  position: relative;
-  width: 100%;
-}
-
-.inputLabel {
-  display: none;
 }
 
 .sectionTitle {
@@ -331,7 +325,7 @@ main {
   }
 
   .headerTitle {
-    gap: 5px;
+    gap: 10px;
   }
 
   .headerTitle h1 {
@@ -347,43 +341,43 @@ main {
     flex-direction: column;
     justify-content: space-between;
     width: 100%;
+    gap: 1rem;
+    padding: .5rem 1rem;
   }
 
   .inputDateArea {
     gap: 10px;
     width: 100%;
-    font-size: 18px;
+    font-size: 12px;
     text-align: center;
   }
 
-  .inputGroup {
+  .inputLabelArea {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
     width: 100%;
   }
 
+  .inputLabelArea h1 {
+    font-family: var(--Poppins);
+    font-weight: 500;
+    font-size: 12px;
+    color: var(--primary);
+  }
+
   .inputDate {
-    height: 2.5rem;
+    height: 2rem;
+    padding-left: 1rem;
     width: 100%;
     outline: 2px solid var(--primary);
     font-size: 12px;
     text-align: center;
   }
 
-  .inputLabel {
-    display: flex;
-    position: absolute;
-    top: 50%;
-    left: 1rem;
-    transform: translateY(-50%);
-    font-family: var(--Poppins);
-    font-weight: 400;
-    font-size: 12px;
-    color: var(--primary);
-    pointer-events: none;
-    transition: all 0.2s ease-in-out;
-  }
-
-  .inputDate:valid+.inputLabel {
-    display: none;
+  .dateButton {
+    justify-content: space-around;
+    width: 100%;
   }
 
   .sectionTitle {
@@ -391,7 +385,7 @@ main {
   }
 
   .sectionTitle h1 {
-    font-size: 20px;
+    font-size: 18px;
   }
 
   .transactionIncomeArea,
@@ -426,7 +420,7 @@ main {
   .evaluationHighestSalesTitle h1,
   .evaluationLowestSalesTitle h1,
   .evaluationTotalRevenueTitle h1 {
-    font-size: 16px;
+    font-size: 14px;
   }
 
   .dailyReportTable,

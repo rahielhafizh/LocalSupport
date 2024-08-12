@@ -19,12 +19,19 @@
 }
 
 body {
+  height: 100%;
+  margin: 0;
   background-color: var(--primary);
+}
+
+main {
+  flex: 1;
 }
 
 #loginCustomerPage {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
 
 .mainHeader {
@@ -34,7 +41,6 @@ body {
 }
 
 .mainArea {
-  min-height: 90vh;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -208,8 +214,10 @@ body {
   .mainArea {
     flex-direction: column-reverse;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 2rem;
   }
+
 
   .mainHeader {
     padding-left: 1rem;
@@ -247,6 +255,7 @@ body {
 
   .loginContainer p {
     font-size: 14px;
+    margin-top: 1rem;
   }
 
   .blueButton {

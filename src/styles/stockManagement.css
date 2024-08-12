@@ -403,7 +403,7 @@ main {
   }
 
   .headerTitle {
-    gap: 5px;
+    gap: 10px;
   }
 
   .headerTitle h1 {
@@ -575,6 +575,7 @@ main {
 
   .productButton {
     gap: 5px;
+    justify-content: center;
   }
 
   .blueButton,

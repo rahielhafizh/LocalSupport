@@ -126,6 +126,18 @@ main {
   outline-offset: 5px;
 }
 
+.inputDate::placeholder {
+  font-family: var(--Poppins);
+  font-weight: 400;
+  font-size: 16px;
+  color: var(--primary);
+  text-align: center;
+}
+
+.inputDate:focus::placeholder {
+  opacity: 0;
+}
+
 .sectionTitle {
   display: flex;
   justify-content: center;
@@ -348,11 +360,17 @@ main {
   }
 
   .inputDate {
-    height: 3rem;
+    height: 2.5rem;
+    padding-left: 1rem;
     width: 100%;
     outline: 2px solid var(--primary);
     font-size: 12px;
     text-align: center;
+  }
+
+  .inputDate::placeholder {
+    font-size: 12px;
+    text-align: start;
   }
 
   .sectionTitle {

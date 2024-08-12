@@ -49,11 +49,11 @@ const renderTransactionReportPage = (container) => {
                 <div class="inputDateArea">
                     <input
                         type="date" id="startDate"
-                        name="startDate" class="inputDate"/>
+                        name="startDate" class="inputDate" placeholder="Masukkan Tanggal Awal"/>
                     <h1>-</h1>
                     <input
                         type="date" id="endDate"
-                        name="endDate" class="inputDate"/>
+                        name="endDate" class="inputDate" placeholder="Masukkan Tanggal Akhir"/>
                 </div>
               <div class="headerButton" id="dateButton">
                   <button class="blueButton"

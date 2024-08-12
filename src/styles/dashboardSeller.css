@@ -451,26 +451,18 @@ main {
 
   .dashboardInput {
     margin: 5px;
+    padding-left: 1rem;
     height: 2rem;
     width: 100%;
     border-radius: 3px;
     font-size: 12px;
     color: var(--primary);
-    text-align: center;
+    text-align: start;
   }
 
   .dashboardInput::placeholder {
     font-size: 12px;
-    text-align: center;
-  }
-
-  input[type="date"]::-webkit-datetime-edit-text,
-  input[type="date"]::-webkit-datetime-edit-month-field,
-  input[type="date"]::-webkit-datetime-edit-day-field,
-  input[type="date"]::-webkit-datetime-edit-year-field {
-    text-align: center;
-    color: var(--primary);
-    background-color: var(--subTwo);
+    text-align: start;
   }
 
   .titleControlArea {
@@ -487,7 +479,7 @@ main {
   }
 
   .productSelection {
-    padding: 1rem !important;
+    padding: 0.5rem;
     height: 17rem;
     width: 100%;
     border-radius: 10px;
@@ -583,14 +575,14 @@ main {
   }
 
   .productButton {
-    gap: 5px !important;
+    gap: 5px;
   }
 
   .blueButton,
   .whiteButton {
     padding: 10px;
-    width: 5.2rem !important;
-    height: 2.2rem !important;
+    width: 5.2rem;
+    height: 2.2rem;
     border-radius: 7px;
     font-size: 12px;
   }

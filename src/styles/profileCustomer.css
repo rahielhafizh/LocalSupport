@@ -186,11 +186,7 @@ body {
 
   .input {
     height: 2rem;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-
-  .locationInput {
+    border-radius: 3px;
     font-size: 14px;
   }
 

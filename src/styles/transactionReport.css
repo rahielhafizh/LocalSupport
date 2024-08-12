@@ -126,16 +126,26 @@ main {
   outline-offset: 5px;
 }
 
-.inputDate::placeholder {
-  font-family: var(--Poppins);
-  font-weight: 400;
-  font-size: 16px;
-  color: var(--primary);
-  text-align: center;
+.inputGroup {
+  position: relative;
+  width: 100%;
 }
 
-.inputDate:focus::placeholder {
-  opacity: 0;
+.inputLabel {
+  position: absolute;
+  top: 50%;
+  left: 1rem;
+  transform: translateY(-50%);
+  font-family: var(--Poppins);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--primary);
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.inputDate:valid + .inputLabel {
+  display: none;
 }
 
 .sectionTitle {
@@ -340,7 +350,7 @@ main {
   .headerTitle h1 {
     font-size: 16px;
   }
- 
+
   .transactionReportHome {
     padding: 1rem;
     gap: 5px;
@@ -359,18 +369,26 @@ main {
     text-align: center;
   }
 
+  .inputGroup {
+    width: 100%;
+  }
+
   .inputDate {
     height: 2.5rem;
-    padding-left: 1rem;
     width: 100%;
     outline: 2px solid var(--primary);
     font-size: 12px;
     text-align: center;
   }
 
-  .inputDate::placeholder {
+  .inputLabel {
+    display: flex;
+    font-family: var(--Poppins);
+    font-weight: 400;
     font-size: 12px;
-    text-align: start;
+    color: var(--primary);
+    text-align: center;
+    margin-bottom: 5px;
   }
 
   .sectionTitle {

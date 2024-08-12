@@ -124,7 +124,7 @@ main {
   border-radius: 20px;
   position: relative;
   overflow: hidden;
-  background-color: var(--mainTwo) !important;
+  background-color: var(--subTwo);
   color: var(--primary);
   border: 2px solid var(--primary);
 }
@@ -269,8 +269,8 @@ main {
   align-items: center;
   padding: 10px;
   border-radius: 15px;
-  width: 7rem !important;
-  height: 2rem !important;
+  width: 7rem;
+  height: 2rem;
   font-family: var(--Poppins);
   font-weight: 600;
   font-size: 20px;
@@ -392,42 +392,42 @@ main {
   }
 
   .headerBar {
-    display: flex !important;
-    height: 4rem !important;
-    padding: 15px !important;
+    display: flex;
+    height: 4rem;
+    padding: 15px;
   }
 
   .headerTitle h1 {
-    font-size: 20px !important;
+    font-size: 20px;
   }
 
   .footerBar {
-    height: 3rem !important;
+    height: 3rem;
   }
 
   .footerBar h1 {
-    font-size: 14px !important;
+    font-size: 14px;
   }
 
   .headerTitle {
-    gap: 10px !important;
+    gap: 10px;
   }
 
   .headerButton {
-    gap: 1rem !important;
+    gap: 1rem;
   }
 
   .mainDevelopment {
-    flex-direction: column !important;
-    justify-content: center !important;
+    flex-direction: column;
+    justify-content: center;
     gap: 1rem;
     background-color: var(--mainTwo);
-    width: 100% !important;
-    height: 11rem !important;
-    margin: 1rem !important;
-    padding: 0.5rem !important;
+    width: 100%;
+    height: 11rem;
+    margin: 1rem;
+    padding: 0.5rem;
     border: 2px solid var(--primary);
-    border-radius: 15px !important;
+    border-radius: 15px;
   }
 
   .dateDevelopmentArea,
@@ -436,24 +436,24 @@ main {
     justify-content: space-between;
     align-items: center;
     background-color: var(--subTwo);
-    width: 100% !important;
-    padding: 10px !important;
+    width: 100%;
+    padding: 10px;
     gap: 2rem;
-    border-radius: 10px !important;
+    border-radius: 10px;
     border: 1px solid var(--primary);
   }
 
   .dashboardInput {
     margin: 5px;
-    height: 2rem !important;
-    width: 100% !important;
-    border-radius: 3px !important;
-    font-size: 12px !important;
+    height: 2rem;
+    width: 100%;
+    border-radius: 3px;
+    font-size: 12px;
     color: var(--primary);
   }
 
   .dashboardInput::placeholder {
-    font-size: 12px !important;
+    font-size: 12px;
   }
 
   .titleControlArea {
@@ -462,26 +462,26 @@ main {
 
   .productListArea {
     display: grid;
-    padding: 0.5rem !important;
-    grid-template-columns: repeat(2, 1fr) !important;
+    padding: 0.5rem;
+    grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(1, 1fr);
-    grid-column-gap: 0.5rem !important;
-    grid-row-gap: 0.5rem !important;
+    grid-column-gap: 0.5rem;
+    grid-row-gap: 0.5rem;
   }
 
   .productSelection {
-    padding: 0.5rem !important;
-    height: 17rem !important;
+    padding: 0.5rem;
+    height: 17rem;
     width: 100%;
-    border-radius: 10px !important;
+    border-radius: 10px;
     border: 2px solid var(--primary);
   }
 
   .productSelection img {
-    height: 8rem !important;
+    height: 8rem;
     width: 100%;
     border: 1px solid var(--primary);
-    border-radius: 7px !important;
+    border-radius: 7px;
     object-fit: cover;
   }
 
@@ -515,7 +515,7 @@ main {
   .productSelection h1,
   .dashboardCartTitle h1,
   .dashboardCartProductDetail h1 {
-    font-size: 14px !important;
+    font-size: 14px;
   }
 
   .productSelection h2,
@@ -523,7 +523,7 @@ main {
   .stockAmount h1,
   .dashboardCartProductAmount h1,
   .dashboardCartTotal h1 {
-    font-size: 12px !important;
+    font-size: 12px;
   }
 
   .dashboardCartArea {
@@ -546,9 +546,9 @@ main {
   }
 
   .sellerButton {
-    width: 3rem !important;
-    height: 3rem !important;
-    border-radius: 10px !important;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 10px;
     font-family: var(--Poppins);
     font-weight: 600;
     font-size: 20px;
@@ -561,19 +561,19 @@ main {
   }
 
   .sellerButton img {
-    height: 2rem !important;
-    width: 2rem !important;
+    height: 2rem;
+    width: 2rem;
   }
 
   .productButton {
-    gap: 5px !important;
+    gap: 5px;
   }
 
   .blueButton {
-    padding: 10px !important;
-    width: 5.5rem !important;
-    height: 2.5rem !important;
-    border-radius: 7px !important;
-    font-size: 12px !important;
+    padding: 10px;
+    width: 5.5rem;
+    height: 2.5rem;
+    border-radius: 7px;
+    font-size: 12px;
   }
 }

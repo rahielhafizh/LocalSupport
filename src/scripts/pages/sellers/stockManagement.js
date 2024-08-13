@@ -183,6 +183,8 @@ const renderStockManagementPage = (container) => {
       navigationButton.style.display = 'none';
     } else {
       navigationButton.style.display = 'flex';
+      const restockCartArea = container.querySelector("#restockCartArea");
+      restockCartArea.style.display = "none";
     }
   });
 
@@ -236,12 +238,12 @@ const renderStockManagementPage = (container) => {
         <div class="restockCartProduct">
             <img src="${product.imageUrl || "../../../public/images/dummyImage.jpg"}" alt="${product.name}" />
                 <div class="restockCartProductDetail">
-                <h1>${product.name}</h1>
-                <h2>${product.buyPrice}</h2>
+                  <h1>${product.name}</h1>
+                  <h2>${product.buyPrice}</h2>
                 </div>
                 <div class="restockCartProductAmount">
-                    <h1>Jumlah :</h1>
-                <h1>${productQuantity}</h1>
+                  <h1>Jumlah :</h1>
+                  <h1>${productQuantity}</h1>
                 </div>
             </div>
       `;
@@ -396,7 +398,11 @@ const renderStockManagementPage = (container) => {
 
   container.querySelector("#openCartButton").addEventListener("click", () => {
     const restockCartArea = container.querySelector("#restockCartArea");
+    const navigationButton = document.getElementById('navigationButton');
     restockCartArea.style.display = restockCartArea.style.display === "none" ? "block" : "none";
+    if (navigationButton.style.display === 'flex') {
+      navigationButton.style.display = 'none';
+    }
   });
 
   container.querySelector("#resetCart").addEventListener("click", resetCart);

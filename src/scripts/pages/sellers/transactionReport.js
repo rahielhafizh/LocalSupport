@@ -174,7 +174,7 @@ const renderTransactionReportPage = (container) => {
               <div class="evaluationHighestSalesContent"
                       id="evaluationHighestSalesContent">
                   <div class="evaluationHighestSalesTitle"
-                          id="evaluationHighestSalesTitle">
+                      id="evaluationHighestSalesTitle">
                       <h1>Penjualan Tertinggi</h1>
                   </div>
                   <table class="evaluationHighestSalesTable"
@@ -187,7 +187,7 @@ const renderTransactionReportPage = (container) => {
                           </tr>
                       </thead>
                       <tbody class="evaluationHighestSalesDetail"
-                                id="evaluationHighestSalesDetail">
+                          id="evaluationHighestSalesDetail">
                           <!-- Highest sales rows will be populated here -->
                       </tbody>
                   </table>
@@ -559,29 +559,35 @@ const evaluateSales = async () => {
 
   const highestSalesDetail = document.getElementById('evaluationHighestSalesDetail');
   highestSalesDetail.innerHTML = '';
-  highestSalesProducts.forEach((product) => {
-    const productRow = document.createElement('tr');
-    productRow.className = 'evaluationHighestSalesProduct';
-    productRow.innerHTML = `
-      <td>${product.name}</td>
-      <td>${product.quantity}</td>
-      <td>${product.totalPrice}</td>
-    `;
-    highestSalesDetail.appendChild(productRow);
-  });
+  highestSalesProducts
+    .sort((a, b) => b.quantity - a.quantity)
+    .slice(0, 10)
+    .forEach((product) => {
+      const productRow = document.createElement('tr');
+      productRow.className = 'evaluationHighestSalesProduct';
+      productRow.innerHTML = `
+        <td>${product.name}</td>
+        <td>${product.quantity}</td>
+        <td>${product.totalPrice}</td>
+      `;
+      highestSalesDetail.appendChild(productRow);
+    });
 
   const lowestSalesDetail = document.getElementById('evaluationLowestSalesDetail');
   lowestSalesDetail.innerHTML = '';
-  lowestSalesProducts.forEach((product) => {
-    const productRow = document.createElement('tr');
-    productRow.className = 'evaluationLowestSalesProduct';
-    productRow.innerHTML = `
-      <td>${product.name}</td>
-      <td>${product.quantity}</td>
-      <td>${product.totalPrice}</td>
-    `;
-    lowestSalesDetail.appendChild(productRow);
-  });
+  lowestSalesProducts
+    .sort((a, b) => a.quantity - b.quantity)
+    .slice(0, 10)
+    .forEach((product) => {
+      const productRow = document.createElement('tr');
+      productRow.className = 'evaluationLowestSalesProduct';
+      productRow.innerHTML = `
+        <td>${product.name}</td>
+        <td>${product.quantity}</td>
+        <td>${product.totalPrice}</td>
+      `;
+      lowestSalesDetail.appendChild(productRow);
+    });
 };
 
 const evaluateTotalRevenue = async () => {

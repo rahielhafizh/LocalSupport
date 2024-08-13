@@ -185,12 +185,14 @@ const renderDashboardSellerPage = (container) => {
     dashboardCartArea.style.display = "block";
   };
 
-  document.getElementById("openNavigation").addEventListener("click", () => {
-    const navigationButton = document.getElementById("navigationButton");
-    if (navigationButton.style.display === "flex") {
-      navigationButton.style.display = "none";
+  document.getElementById('openNavigation').addEventListener('click', () => {
+    const navigationButton = document.getElementById('navigationButton');
+    if (navigationButton.style.display === 'flex') {
+      navigationButton.style.display = 'none';
     } else {
-      navigationButton.style.display = "flex";
+      navigationButton.style.display = 'flex';
+      const restockCartArea = container.querySelector("#dashboardCartArea");
+      restockCartArea.style.display = "none";
     }
   });
 
@@ -429,7 +431,11 @@ const renderDashboardSellerPage = (container) => {
 
   container.querySelector("#openCartButton").addEventListener("click", () => {
     const dashboardCartArea = container.querySelector("#dashboardCartArea");
+    const navigationButton = document.getElementById('navigationButton');
     dashboardCartArea.style.display = dashboardCartArea.style.display === "none" ? "block" : "none";
+    if (navigationButton.style.display === 'flex') {
+      navigationButton.style.display = 'none';
+    }
   });
 
   container.querySelector("#resetCart").addEventListener("click", resetCart);

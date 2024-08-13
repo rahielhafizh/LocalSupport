@@ -71,7 +71,7 @@ body {
 .loginForm {
   display: flex;
   flex-flow: column nowrap;
-  margin-top: 1.25rem;
+  margin-top: 1rem;
   gap: 5px;
 }
 
@@ -250,7 +250,6 @@ body {
 
   .loginContainer p {
     font-size: 14px;
-    margin-top: 1rem;
   }
 
   .blueButton,

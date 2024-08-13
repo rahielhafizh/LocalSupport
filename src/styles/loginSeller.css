@@ -78,7 +78,7 @@ body {
 .formLabel {
   display: flex;
   flex-flow: column nowrap;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 .formLabel label {

@@ -38,7 +38,8 @@ const renderRegisterSeller = (container) => {
             </div>
 
             <div class="formLabel">
-              <label for="sellerNumber">Nomor Handphone</label>
+              <label for="sellerNumber">Nomor Telepon</label>
+              <h1>(Gunakan format +62, contoh +6285717707070)</h1>
               <input
                 type="text"
                 id="sellerNumber"
@@ -49,6 +50,7 @@ const renderRegisterSeller = (container) => {
 
             <div class="formLabel">
               <label for="sellerPlace">Lokasi Usaha</label>
+              <h1>(Masukkan alamat dengan lengkap untuk memudahkan pelanggan dalam menemukan lokasi anda)</h1>
                 <textarea
                 id="sellerPlace"
                 name="sellerPlace"

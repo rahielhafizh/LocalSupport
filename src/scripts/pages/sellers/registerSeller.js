@@ -39,7 +39,7 @@ const renderRegisterSeller = (container) => {
 
             <div class="formLabel">
               <label for="sellerNumber">Nomor Telepon</label>
-              <h1>(Gunakan format +62, contoh +6285717707070)</h1>
+              <h1>(Gunakan format +62, contoh: +6285717707070)</h1>
               <input
                 type="text"
                 id="sellerNumber"

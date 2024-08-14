@@ -35,7 +35,7 @@ const renderSavedSellerPage = async (container) => {
           <button class="sellersButton" id="profilePage">
             <img src=${profileIcon} alt="Profile Icon" />
           </button>
-          <h1 id="customerName">Loading</h1>
+          <h1 id="customerName">BantuLokal</h1>
         </div>
         <div class="headerButton">
           <button class="whiteButton" id="dashboardCustomer">

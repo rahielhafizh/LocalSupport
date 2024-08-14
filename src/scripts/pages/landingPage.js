@@ -14,7 +14,7 @@ const renderLandingPage = (container) => {
       <header>
         <div class="headerBar">
           <div class="headerTitle">
-            <h1>LocalSupport</h1>
+            <h1>BantuLokal</h1>
           </div>
           <div class="headerButtonArea">
             <button class="whiteButton" id="loginCustomer">

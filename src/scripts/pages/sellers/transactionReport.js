@@ -28,7 +28,7 @@ const renderTransactionReportPage = (container) => {
                   <button class="sellerButton" id="profilePage">
                       <img src=${profileIcon} alt="Profile Icon" />
                   </button>
-                  <h1 id="marketName">Loading</h1>
+                  <h1 id="marketName">BantuLokal</h1>
               </div>
               <div class="headerButton" id="navigationButton">
                   <button class="whiteButton" id="productPage">Produk</button>

@@ -72,7 +72,7 @@ const renderProductManagementPage = (container) => {
                     <input type="text" id="productName" name="productName"
                           class="input" placeholder="Nama Produk" required />
                     <input type="text" id="productBuyPrice" name="productBuyPrice"
-                          class="input" placeholder="Harga Beli" required />
+                          class="input" placeholder="Harga Modal" required />
                     <input type="text" id="productSellPrice" name="productSellPrice"
                           class="input" placeholder="Harga Jual" required />
                     <button class="blueButton" id="addProduct">Tambah</button>
@@ -92,7 +92,7 @@ const renderProductManagementPage = (container) => {
                           placeholder="Nama Produk" required />
                     <input type="text" id="updateProductBuyPrice"
                           name="updateProductBuyPrice" class="input"
-                          placeholder="Harga Beli" required />
+                          placeholder="Harga Modal" required />
                     <input type="text" id="updateProductSellPrice"
                           name="updateProductSellPrice" class="input"
                           placeholder="Harga Jual" required />

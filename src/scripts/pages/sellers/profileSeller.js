@@ -50,7 +50,7 @@ const renderProfileSeller = (container) => {
             </div>
 
             <div class="formLabel">
-              <label for="sellerNumber">Nomor Handphone</label>
+              <label for="sellerNumber">Nomor Telepon</label>
               <input
                 type="text"
                 id="sellerNumber"

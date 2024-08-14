@@ -20,18 +20,14 @@
 
 body {
   height: 100%;
-  margin: 0;
   background-color: var(--primary);
 }
 
-main {
-  flex: 1;
-}
-
 #loginCustomerPage {
+  min-height: 100vh;
+  background-color: var(--primary);
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
 }
 
 .mainHeader {

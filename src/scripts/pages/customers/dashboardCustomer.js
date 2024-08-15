@@ -101,7 +101,7 @@ const renderDashboardCustomerPage = async (container) => {
                 id="reviewInput"
                 name="sellerReviewPost"
                 class="sellerReviewInput"
-                placeholder="Bagikan penilaian anda"></textarea>
+                placeholder="Bagikan pengalaman anda"></textarea>
               <button class="blueButton" id="sellerReviewSubmit">Kirim</button>
             </div>
           </div>
@@ -358,20 +358,29 @@ const displaySellerProducts = async (sellerId) => {
   const productList = document.getElementById("sellerProductList");
 
   productList.innerHTML = "";
-  productsSnapshot.forEach((doc) => {
-    const productData = doc.data();
-    const productDiv = document.createElement("div");
-    productDiv.className = "sellerProduct";
+  if (productsSnapshot.empty) {
+    const noProductMessage = document.createElement("div");
+    noProductMessage.className = "noProductMessage";
+    noProductMessage.innerHTML = `<p id="errormessage">Saat ini belum ada produk yang tersedia. Silahkan menghubungi penjual untuk menanyakan produk atau kebutuhan Anda.</p>`;
+    productList.appendChild(noProductMessage);
+  } else {
+    productsSnapshot.forEach((doc) => {
+      const productData = doc.data();
+      const productDiv = document.createElement("div");
+      productDiv.className = "sellerProduct";
 
-    productDiv.innerHTML = `
-      <img src="${productData.imageUrl}" alt="Product Image" />
-      <h1 id="name">${productData.name}</h1>
-      <h2 id="sellPrice">${productData.sellPrice}</h2>
-    `;
-    productList.appendChild(productDiv);
-  });
+      productDiv.innerHTML = `
+        <img src="${productData.imageUrl}" alt="Product Image" />
+        <h1 id="name">${productData.name}</h1>
+        <h2 id="sellPrice">${productData.sellPrice}</h2>
+      `;
+      productList.appendChild(productDiv);
+    });
+  }
 
+  const productCatalogSection = document.getElementById("sellerProductCatalog");
   document.getElementById("sellerProductCatalog").style.display = "block";
+  productCatalogSection.scrollIntoView({ behavior: "smooth" });
 };
 
 const displaySellerReviews = async (sellerId) => {
@@ -387,19 +396,28 @@ const displaySellerReviews = async (sellerId) => {
   const reviewList = document.getElementById("sellerReviewList");
 
   reviewList.innerHTML = "";
-  reviewsSnapshot.forEach((doc) => {
-    const reviewData = doc.data();
-    const reviewDiv = document.createElement("div");
-    reviewDiv.className = "sellerReview";
+  if (reviewsSnapshot.empty) {
+    const noReviewMessage = document.createElement("div");
+    noReviewMessage.className = "noReviewMessage";
+    noReviewMessage.innerHTML = `<p id="errormessage">Belum ada ulasan untuk usaha ini. Bagikan pengalaman anda dengan memberikan ulasan!</p>`;
+    reviewList.appendChild(noReviewMessage);
+  } else {
+    reviewsSnapshot.forEach((doc) => {
+      const reviewData = doc.data();
+      const reviewDiv = document.createElement("div");
+      reviewDiv.className = "sellerReview";
 
-    reviewDiv.innerHTML = `
-      <h1 id="customerName">${reviewData.customerName}</h1>
-      <h2 id="customerReview">${reviewData.review}</h2>
-    `;
-    reviewList.appendChild(reviewDiv);
-  });
+      reviewDiv.innerHTML = `
+        <h1 id="customerName">${reviewData.customerName}</h1>
+        <h2 id="customerReview">${reviewData.review}</h2>
+      `;
+      reviewList.appendChild(reviewDiv);
+    });
+  }
 
-  document.getElementById("sellerReviewArea").style.display = "block";
+  const reviewAreaSection = document.getElementById("sellerReviewArea");
+  reviewAreaSection.style.display = "block";
+  reviewAreaSection.scrollIntoView({ behavior: "smooth" });
 };
 
 const toggleBookmarkSeller = async (sellerId) => {

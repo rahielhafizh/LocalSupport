@@ -287,6 +287,14 @@ html {
   text-align: center;
 }
 
+#errormessage {
+  font-family: var(--OpenSans);
+  font-weight: 400;
+  font-size: 12px;
+  color: var(--primary);
+  text-align: start;
+}
+
 .sellerProduct h2 {
   font-family: var(--OpenSans);
   font-weight: 500;
@@ -558,10 +566,6 @@ html {
     font-size: 12px;
   }
 
-  .sellerReview h2 {
-    font-size: 10px;
-  }
-
   .sellerReviewInput {
     height: 4rem;
     font-size: 12px;
@@ -590,11 +594,11 @@ html {
     border-radius: 5px;
   }
 
-  .sellerProduct h1 {
+  .sellerProduct h1,
+  .sellerProduct h2,
+  .sellerReview h2,
+  #errormessage {
     font-size: 10px;
   }
 
-  .sellerProduct h2 {
-    font-size: 10px;
-  }
 }

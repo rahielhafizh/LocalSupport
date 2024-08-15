@@ -220,12 +220,13 @@ const renderDashboardCustomerPage = async (container) => {
     });
 
     const openMapForSeller = (sellerPlace) => {
-      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-      const mapsUrl = isIOS
-        ? `maps://maps.apple.com/?q=${encodeURIComponent(sellerPlace)}`
-        : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sellerPlace)}`;
+      const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sellerPlace)}`;
+      const appleMapsUrl = `maps://maps.apple.com/?q=${encodeURIComponent(sellerPlace)}`;
 
-      window.open(mapsUrl, "_blank");
+      const newWindow = window.open(googleMapsUrl, "_blank");
+      if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+        window.open(appleMapsUrl, "_blank");
+      }
     };
 
     document.querySelectorAll(".showMap").forEach((button) => {

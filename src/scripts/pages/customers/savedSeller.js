@@ -184,17 +184,25 @@ const renderSavedSellerPage = async (container) => {
         });
       });
 
+      const openMapForSeller = (sellerPlace) => {
+        const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sellerPlace)}`;
+        const appleMapsUrl = `maps://maps.apple.com/?q=${encodeURIComponent(sellerPlace)}`;
+
+        const newWindow = window.open(googleMapsUrl, "_blank");
+        if (!newWindow || newWindow.closed || typeof newWindow.closed === 'undefined') {
+          window.open(appleMapsUrl, "_blank");
+        }
+      };
+
       document.querySelectorAll(".showMap").forEach((button) => {
         button.addEventListener("click", async (event) => {
-          const sellerId = event.currentTarget.id;
+          const sellerId = event.currentTarget.id.split('-')[1];
           const sellerDocRef = doc(db, "sellers", sellerId);
           const sellerDoc = await getDoc(sellerDocRef);
           const sellerData = sellerDoc.data();
           const { sellerPlace } = sellerData;
-          const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-            sellerPlace,
-          )}`;
-          window.open(mapsUrl, "_blank");
+
+          openMapForSeller(sellerPlace);
         });
       });
 

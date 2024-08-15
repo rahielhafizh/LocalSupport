@@ -284,9 +284,7 @@ const handleUpdateForm = (product) => {
   document.getElementById("updateProductBuyPrice").value = product.buyPrice;
   document.getElementById("updateProductSellPrice").value = product.sellPrice;
   const imageLabel = document.getElementById("updateProductImageName");
-  imageLabel.textContent = product.imageUrl
-    ? product.imageUrl.split("/").pop()
-    : "Gambar Produk";
+  imageLabel.textContent = `Gambar ${product.name}`;
 };
 
 const handleEditProductClick = async (event) => {
@@ -298,6 +296,7 @@ const handleEditProductClick = async (event) => {
     if (productDoc.exists()) {
       handleUpdateForm(productDoc.data());
       document.getElementById("updateProduct").dataset.productId = productId;
+      document.getElementById("updateProductArea").scrollIntoView({ behavior: "smooth" });
     }
   } catch (error) {
     console.error("Terjadi kesalahan saat mengambil produk: ", error);
@@ -386,30 +385,34 @@ const handleSearchProduct = async () => {
     const productsRef = collection(db, `sellers/${user.uid}/products`);
     const querySnapshot = await getDocs(productsRef);
 
+    let hasResults = false;
+
     querySnapshot.forEach((doc) => {
       const product = doc.data();
       const productName = product.name.toLowerCase();
 
       if (productName.includes(searchKeyword)) {
+        hasResults = true;
         const productDetail = `
-            <div class="productDetail" data-id="${doc.id}">
+          <div class="productDetail" data-id="${doc.id}">
             <img src="${product.imageUrl || "../../../public/images/dummyImage.jpg"}" alt="${product.name}" />
-              <h1>${product.name}</h1>
-              <h2 id="productBuyPrice">${product.buyPrice}</h2>
-              <h2>${product.sellPrice}</h2>
-              <div class="productButton">
-                <button class="blueButton editProduct" id="editProduct">Perbarui</button>
-                <button class="whiteButton deleteProduct" id="deleteProduct">Hapus</button>
-              </div>
+            <h1>${product.name}</h1>
+            <h2 id="productBuyPrice">${product.buyPrice}</h2>
+            <h2>${product.sellPrice}</h2>
+            <div class="productButton">
+              <button class="blueButton editProduct" id="editProduct">Perbarui</button>
+              <button class="whiteButton deleteProduct" id="deleteProduct">Hapus</button>
             </div>
-          `;
+          </div>
+        `;
         productCatalog.innerHTML += productDetail;
       }
     });
 
-    if (productCatalog.innerHTML === "") {
+    if (!hasResults) {
       productCatalog.innerHTML = "<p>Tidak ada produk yang sesuai dengan pencarian.</p>";
     }
+    document.getElementById("searchProduct").value = "";
   } catch (error) {
     console.error("Terjadi kesalahan saat mencari produk:", error);
   }

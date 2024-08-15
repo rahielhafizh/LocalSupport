@@ -385,6 +385,7 @@ const renderStockManagementPage = (container) => {
     const filteredProducts = products.filter((product) =>
       product.name.toLowerCase().includes(searchProductInput));
     displayProducts(filteredProducts);
+    document.getElementById("searchProduct").value = "";
   };
 
   container

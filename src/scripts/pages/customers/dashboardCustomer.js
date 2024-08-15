@@ -256,7 +256,6 @@ const renderDashboardCustomerPage = async (container) => {
 
   displaySellers(sellersData);
 
-  // Event listener for sorting sellers
   document.getElementById("sortList").addEventListener("click", () => {
     const sortOption = document.getElementById("sortListOption").value;
     const sortedSellers = sellersData.sort((a, b) => {
@@ -270,13 +269,13 @@ const renderDashboardCustomerPage = async (container) => {
     displaySellers(sortedSellers);
   });
 
-  // Event listener for searching sellers
   document.getElementById("searchSellerButton").addEventListener("click", () => {
     const searchValue = document.getElementById("searchSeller").value.toLowerCase();
     const filteredSellers = sellersData.filter((seller) =>
       seller.marketName.toLowerCase().includes(searchValue)
       || seller.products.some((product) => product.name.toLowerCase().includes(searchValue)));
     displaySellers(filteredSellers);
+    document.getElementById("searchSeller").value = "";
   });
 
   document.getElementById("closeCatalogButton").addEventListener("click", () => {

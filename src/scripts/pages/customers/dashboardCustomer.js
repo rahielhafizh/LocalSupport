@@ -219,6 +219,15 @@ const renderDashboardCustomerPage = async (container) => {
       });
     });
 
+    const openMapForSeller = (sellerPlace) => {
+      const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+      const mapsUrl = isIOS
+        ? `maps://maps.apple.com/?q=${encodeURIComponent(sellerPlace)}`
+        : `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(sellerPlace)}`;
+
+      window.open(mapsUrl, "_blank");
+    };
+
     document.querySelectorAll(".showMap").forEach((button) => {
       button.addEventListener("click", async (event) => {
         const sellerId = event.currentTarget.id.split('-')[1];
@@ -226,10 +235,8 @@ const renderDashboardCustomerPage = async (container) => {
         const sellerDoc = await getDoc(sellerDocRef);
         const sellerData = sellerDoc.data();
         const { sellerPlace } = sellerData;
-        const mapsUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-          sellerPlace,
-        )}`;
-        window.open(mapsUrl, "_blank");
+
+        openMapForSeller(sellerPlace);
       });
     });
 

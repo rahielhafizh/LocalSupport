@@ -3,6 +3,7 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import '../../../styles/loginCustomer.css';
 import firebaseConfig from '../../common/config';
+
 import backIcon from "../../../public/icons/back-icon.svg";
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -13,7 +14,7 @@ const renderLoginCustomer = (container) => {
   document.body.style.backgroundColor = '#00258c';
 
   container.innerHTML = `
-  <main id="loginCustomerPage">
+    <main id="loginCustomerPage">
       <header>
         <div class="mainHeader">
           <button id="backButton" class="backButton" type="button">
@@ -44,17 +45,18 @@ const renderLoginCustomer = (container) => {
                 name="customerPassword"
                 class="input"
                 required />
+
               <div class="inputContainer">
                 <label for="showPassword">
                   <input
                     type="checkbox"
                     class="passwordCheckbox"
                     id="showPassword" />
-                  Tampilkan Password</label
-                >
+                  Tampilkan Password
+                </label>
               </div>
             </div>
-            <button type="submit" class="blueButton">Masuk</button>
+            <button type="submit" class="blueButton" id="submitCustomer">Masuk</button>
           </form>
           <div class="loginContainer">
             <p>
@@ -65,14 +67,15 @@ const renderLoginCustomer = (container) => {
 
         <div class="headlineContainer">
           <div class="loginHeadline">
-            <h1>Selamat datang kembali! </h1>
+            <h1>Dukung Usaha Lokal Di Sekitar Anda Mulai Hari Ini!</h1>
             <p>
-            Masuk untuk mengakses berbagai penjual dan penyedia jasa lokal. Temukan kebutuhan anda, hubungi penjual, dan nikmati kemudahan menemukan lokasi penjual. Bersama kita mendukung pertumbuhan usaha lokal dan menciptakan pengalaman belanja yang lebih berarti.
+              Bergabung bersama kami akan memberi anda akses langsung ke berbagai usaha dan jasa lokal. Anda dapat menemukan beragam penjual untuk memenuhi kebutuhan anda, hubungi penjual secara langsung, temukan lokasi usaha dengan mudah, dan jelajahi semua produk untuk membuat keputusan belanja yang lebih tepat!
+            </p>
           </div>
         </div>
       </section>
     </main>
-    `;
+  `;
 
   const backButton = container.querySelector('#backButton');
   const passwordInput = container.querySelector('#customerPassword');

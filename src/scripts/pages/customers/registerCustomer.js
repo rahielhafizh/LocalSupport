@@ -135,9 +135,7 @@ const renderRegisterCustomer = (container) => {
       };
 
       console.log("Membuat profil pengguna menggunakan data:", userProfile);
-
       await setDoc(doc(firestore, "customers", userId), userProfile);
-
       console.log("Profil pengguna berhasil dibuat");
     } catch (error) {
       console.error("Terjadi kesalahan saat membuat profil pengguna:", error);

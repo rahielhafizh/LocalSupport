@@ -1,11 +1,13 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import '../../../styles/loginCustomer.css';
 import firebaseConfig from '../../common/config';
 import backIcon from "../../../public/icons/back-icon.svg";
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
+const firestore = getFirestore(firebaseApp);
 
 const renderLoginCustomer = (container) => {
   document.body.style.backgroundColor = '#00258c';
@@ -100,13 +102,18 @@ const renderLoginCustomer = (container) => {
         customerEmail,
         customerPassword,
       );
-      console.log('Login berhasil dilakukan:', userCredential);
 
-      handleLoginSuccess(userCredential);
+      const userDocRef = doc(firestore, 'customers', userCredential.user.uid);
+      const userDoc = await getDoc(userDocRef);
+
+      if (userDoc.exists()) {
+        console.log('Login berhasil dilakukan:', userCredential);
+        handleLoginSuccess(userCredential);
+      } else {
+        throw new Error("Anda tidak terdaftar sebagai customer.");
+      }
     } catch (error) {
-      console.error('Login gagal:', error.message);
-      const errorMessage = document.querySelector('.error-message');
-      errorMessage.textContent = error.message;
+      console.error("Login gagal dilakukan:", error.message);
       handleLoginError(error);
     }
   });
@@ -121,9 +128,19 @@ const renderLoginCustomer = (container) => {
   };
 
   const handleLoginError = (error) => {
-    console.error('Login gagal :', error.message);
-    const errorMessage = document.querySelector('.error-message');
-    errorMessage.textContent = error.message;
+    let errorMessage;
+    switch (error.code) {
+      case 'auth/invalid-credential':
+        errorMessage = "Email dan password tidak sesuai";
+        break;
+      case 'auth/network-request-failed':
+        errorMessage = "Tidak dapat terhubung ke server. Periksa koneksi internet Anda.";
+        break;
+      default:
+        errorMessage = error.message;
+        break;
+    }
+    alert(errorMessage);
   };
 };
 

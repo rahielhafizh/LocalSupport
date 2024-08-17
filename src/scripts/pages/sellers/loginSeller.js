@@ -1,5 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import '../../../styles/loginSeller.css';
 import firebaseConfig from '../../common/config';
 
@@ -7,6 +8,7 @@ import backIcon from "../../../public/icons/back-icon.svg";
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
+const firestore = getFirestore(firebaseApp);
 
 const renderLoginSeller = (container) => {
   document.body.style.backgroundColor = '#00258c';
@@ -107,8 +109,15 @@ const renderLoginSeller = (container) => {
         sellerPassword,
       );
 
-      console.log('Login berhasil dilakukan:', userCredential);
-      handleLoginSuccess(userCredential);
+      const userDocRef = doc(firestore, 'sellers', userCredential.user.uid);
+      const userDoc = await getDoc(userDocRef);
+
+      if (userDoc.exists()) {
+        console.log('Login berhasil dilakukan:', userCredential);
+        handleLoginSuccess(userCredential);
+      } else {
+        throw new Error("Anda tidak terdaftar sebagai seller.");
+      }
     } catch (error) {
       console.error("Login gagal dilakukan:", error.message);
       handleLoginError(error);
@@ -134,7 +143,7 @@ const renderLoginSeller = (container) => {
         errorMessage = "Tidak dapat terhubung ke server. Periksa koneksi internet Anda.";
         break;
       default:
-        errorMessage = `Login gagal. Silakan coba lagi.`;
+        errorMessage = error.message;
         break;
     }
     alert(errorMessage);

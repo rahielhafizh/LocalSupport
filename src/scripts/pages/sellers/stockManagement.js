@@ -230,7 +230,7 @@ const renderStockManagementPage = (container) => {
     Object.keys(cart).forEach((productId) => {
       const product = products.find((p) => p.id === productId);
       const productQuantity = cart[productId].quantity;
-      const productTotalPrice = product.sellPrice * productQuantity;
+      const productTotalPrice = product.buyPrice * productQuantity;
       totalPrice += productTotalPrice;
       totalProducts += productQuantity;
 

@@ -57,7 +57,7 @@ main {
   align-items: center;
   justify-content: end;
   gap: 0.5rem;
-  width: 10rem;
+  width: 12rem;
 }
 
 .productButton {
@@ -175,7 +175,7 @@ main {
 .restockCartTotal h1 {
   font-family: var(--OpenSans);
   font-weight: 500;
-  font-size: 16px;
+  font-size: 14px;
   color: var(--primary);
 }
 

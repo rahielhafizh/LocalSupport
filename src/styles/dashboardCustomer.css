@@ -56,7 +56,7 @@ html {
 .headerTitle h1 {
   font-family: var(--Poppins);
   font-weight: 600;
-  font-size: 32px;
+  font-size: 28px;
   color: var(--subTwo);
 }
 
@@ -688,8 +688,7 @@ html {
 
   .sellerProduct h1,
   .sellerProduct h2,
-  .sellerReview h2
-  #errormessage {
+  .sellerReview h2 #errormessage {
     font-size: 10px;
   }
 }

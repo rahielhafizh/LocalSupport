@@ -364,8 +364,16 @@ const displaySellerProducts = async (sellerId) => {
     noProductMessage.innerHTML = `<p id="errormessage">Saat ini belum ada produk yang tersedia. Silahkan menghubungi penjual untuk menanyakan produk atau kebutuhan Anda.</p>`;
     productList.appendChild(noProductMessage);
   } else {
-    productsSnapshot.forEach((doc) => {
-      const productData = doc.data();
+    const sortedProducts = productsSnapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    })).sort((a, b) => {
+      const nameA = a.name.toUpperCase();
+      const nameB = b.name.toUpperCase();
+      return nameA.localeCompare(nameB);
+    });
+
+    sortedProducts.forEach((productData) => {
       const productDiv = document.createElement("div");
       productDiv.className = "sellerProduct";
 

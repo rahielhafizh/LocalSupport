@@ -9,9 +9,7 @@ import {
   getDocs,
   setDoc,
 } from "firebase/firestore";
-import { getStorage, ref, getDownloadURL } from "firebase/storage";
 import firebaseConfig from "../../common/config";
-
 import profileIcon from "../../../public/icons/profile-icon.svg";
 import cartIcon from "../../../public/icons/cart-icon.svg";
 import menuIcon from "../../../public/icons/menu-icon.svg";
@@ -151,25 +149,21 @@ const renderStockManagementPage = (container) => {
       }
     });
 
-    productListArea
-      .querySelectorAll(".addRestockCartProduct")
-      .forEach((button) => {
-        button.addEventListener("click", (e) => {
-          const { productId } = e.target.closest(".productSelection").dataset;
-          addProductToCart(productId);
-          showCart();
-        });
+    productListArea.querySelectorAll(".addRestockCartProduct").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const { productId } = e.target.closest(".productSelection").dataset;
+        addProductToCart(productId);
+        showCart();
       });
+    });
 
-    productListArea
-      .querySelectorAll(".reduceRestockCartProduct")
-      .forEach((button) => {
-        button.addEventListener("click", (e) => {
-          const { productId } = e.target.closest(".productSelection").dataset;
-          reduceProductFromCart(productId);
-          showCart();
-        });
+    productListArea.querySelectorAll(".reduceRestockCartProduct").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const { productId } = e.target.closest(".productSelection").dataset;
+        reduceProductFromCart(productId);
+        showCart();
       });
+    });
   };
 
   const showCart = () => {
@@ -379,18 +373,13 @@ const renderStockManagementPage = (container) => {
   };
 
   const searchProduct = () => {
-    const searchProductInput = container
-      .querySelector("#searchProduct")
-      .value.toLowerCase();
-    const filteredProducts = products.filter((product) =>
-      product.name.toLowerCase().includes(searchProductInput));
+    const searchProductInput = container.querySelector("#searchProduct").value.toLowerCase();
+    const filteredProducts = products.filter((product) => product.name.toLowerCase().includes(searchProductInput));
     displayProducts(filteredProducts);
     document.getElementById("searchProduct").value = "";
   };
 
-  container
-    .querySelector("#searchProductButton")
-    .addEventListener("click", searchProduct);
+  container.querySelector("#searchProductButton").addEventListener("click", searchProduct);
 
   container.querySelector("#updateRestockDate").addEventListener("click", async () => {
     const userId = auth.currentUser.uid;

@@ -3,7 +3,6 @@ import { initializeApp } from "firebase/app";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
 import { getFirestore, doc, setDoc } from "firebase/firestore";
 import firebaseConfig from "../../common/config";
-
 import backIcon from "../../../public/icons/back-icon.svg";
 
 const firebaseApp = initializeApp(firebaseConfig);
@@ -112,7 +111,6 @@ const renderRegisterSeller = (container) => {
 
   const backButton = document.querySelector("#backButton");
   const showPasswordCheck = document.querySelector("#showPassword");
-  const registerForm = document.querySelector("#registerForm");
 
   showPasswordCheck.addEventListener("change", () => {
     const passwordInput = document.getElementById("sellerPassword");
@@ -125,16 +123,16 @@ const renderRegisterSeller = (container) => {
     window.location.href = "/";
   });
 
+  const registerForm = document.querySelector("#registerForm");
+
   registerForm.addEventListener("submit", async (event) => {
     event.preventDefault();
-
     const ownerName = document.getElementById("ownerName").value;
     const marketName = document.getElementById("marketName").value;
     const sellerNumber = document.getElementById("sellerNumber").value;
     const sellerPlace = document.getElementById("sellerPlace").value;
     const sellerEmail = document.getElementById("sellerEmail").value;
     const sellerPassword = document.getElementById("sellerPassword").value;
-
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,

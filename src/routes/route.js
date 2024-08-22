@@ -16,7 +16,6 @@ import renderLoginCustomer from '../scripts/pages/customers/loginCustomer';
 const renderPage = () => {
   const appContainer = document.querySelector('#app');
   const path = window.location.pathname;
-
   const auth = getAuth();
 
   switch (path) {

@@ -19,7 +19,6 @@ import {
 } from "firebase/storage";
 import { v4 as uuidv4 } from 'uuid';
 import firebaseConfig from "../../common/config";
-
 import profileIcon from "../../../public/icons/profile-icon.svg";
 import menuIcon from "../../../public/icons/menu-icon.svg";
 

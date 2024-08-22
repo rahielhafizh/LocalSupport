@@ -3,7 +3,6 @@ import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, getDoc } from 'firebase/firestore';
 import '../../../styles/loginCustomer.css';
 import firebaseConfig from '../../common/config';
-
 import backIcon from "../../../public/icons/back-icon.svg";
 
 const firebaseApp = initializeApp(firebaseConfig);

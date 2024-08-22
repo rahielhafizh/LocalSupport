@@ -10,7 +10,6 @@ import {
   setDoc,
 } from "firebase/firestore";
 import firebaseConfig from "../../common/config";
-
 import profileIcon from "../../../public/icons/profile-icon.svg";
 import cartIcon from "../../../public/icons/cart-icon.svg";
 import menuIcon from "../../../public/icons/menu-icon.svg";
@@ -139,7 +138,8 @@ const renderDashboardSellerPage = (container) => {
                 <h1 id="stockAmount">${product.stock}</h1>
             </div>
             <div class="productButton">
-                <button class="blueButton addDashboardCartProduct" ${product.stock === 0 ? "disabled" : ""}>Tambah</button>
+                <button class="blueButton addDashboardCartProduct"
+                ${product.stock === 0 ? "disabled" : ""}>Tambah</button>
                 <button class="whiteButton reduceDashboardCartProduct">Hapus</button>
             </div>
         </div>
@@ -156,28 +156,24 @@ const renderDashboardSellerPage = (container) => {
       }
     });
 
-    productListArea
-      .querySelectorAll(".addDashboardCartProduct")
-      .forEach((button) => {
-        button.addEventListener("click", (e) => {
-          const { productId } = e.target.closest(".productSelection").dataset;
-          const product = products.find((p) => p.id === productId);
-          if (product.stock > 0) {
-            addProductToCart(productId);
-            showCart();
-          }
-        });
-      });
-
-    productListArea
-      .querySelectorAll(".reduceDashboardCartProduct")
-      .forEach((button) => {
-        button.addEventListener("click", (e) => {
-          const { productId } = e.target.closest(".productSelection").dataset;
-          reduceProductFromCart(productId);
+    productListArea.querySelectorAll(".addDashboardCartProduct").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const { productId } = e.target.closest(".productSelection").dataset;
+        const product = products.find((p) => p.id === productId);
+        if (product.stock > 0) {
+          addProductToCart(productId);
           showCart();
-        });
+        }
       });
+    });
+
+    productListArea.querySelectorAll(".reduceDashboardCartProduct").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        const { productId } = e.target.closest(".productSelection").dataset;
+        reduceProductFromCart(productId);
+        showCart();
+      });
+    });
   };
 
   const showCart = () => {
@@ -185,12 +181,12 @@ const renderDashboardSellerPage = (container) => {
     dashboardCartArea.style.display = "block";
   };
 
-  document.getElementById('openNavigation').addEventListener('click', () => {
-    const navigationButton = document.getElementById('navigationButton');
-    if (navigationButton.style.display === 'flex') {
-      navigationButton.style.display = 'none';
+  document.getElementById("openNavigation").addEventListener("click", () => {
+    const navigationButton = document.getElementById("navigationButton");
+    if (navigationButton.style.display === "flex") {
+      navigationButton.style.display = "none";
     } else {
-      navigationButton.style.display = 'flex';
+      navigationButton.style.display = "flex";
       const restockCartArea = container.querySelector("#dashboardCartArea");
       restockCartArea.style.display = "none";
     }
@@ -231,15 +227,9 @@ const renderDashboardSellerPage = (container) => {
   };
 
   const updateCartDisplay = () => {
-    const dashboardCartProducts = container.querySelector(
-      "#dashboardCartProducts",
-    );
-    const dashboardCartTotalPrice = container.querySelector(
-      "#dashboardCartTotalPrice",
-    );
-    const dashboardCartTotalProduct = container.querySelector(
-      "#dashboardCartTotalProduct",
-    );
+    const dashboardCartProducts = container.querySelector("#dashboardCartProducts");
+    const dashboardCartTotalPrice = container.querySelector("#dashboardCartTotalPrice");
+    const dashboardCartTotalProduct = container.querySelector("#dashboardCartTotalProduct");
     dashboardCartProducts.innerHTML = "";
     let totalPrice = 0;
     let totalProducts = 0;
@@ -254,7 +244,9 @@ const renderDashboardSellerPage = (container) => {
 
       const cartProductHTML = `
         <div class="dashboardCartProduct">
-            <img src="${product.imageUrl || "../../../public/images/dummyImage.jpg"}" alt="${product.name}" />
+            <img src="${
+  product.imageUrl || "../../../public/images/dummyImage.jpg"
+}" alt="${product.name}" />
             <div class="dashboardCartProductDetail">
                 <h1>${product.name}</h1>
                 <h2>${product.sellPrice}</h2>
@@ -410,32 +402,26 @@ const renderDashboardSellerPage = (container) => {
   };
 
   const searchProduct = () => {
-    const searchProductInput = container
-      .querySelector("#searchProduct")
-      .value.toLowerCase();
+    const searchProductInput = container.querySelector("#searchProduct").value.toLowerCase();
     const filteredProducts = products.filter((product) =>
       product.name.toLowerCase().includes(searchProductInput));
     displayProducts(filteredProducts);
     document.getElementById("searchProduct").value = "";
   };
 
-  container
-    .querySelector("#updateDashboardDate")
-    .addEventListener("click", async () => {
-      const userId = auth.currentUser.uid;
-      await handleUpdateDashboardDate(userId);
-    });
+  container.querySelector("#updateDashboardDate").addEventListener("click", async () => {
+    const userId = auth.currentUser.uid;
+    await handleUpdateDashboardDate(userId);
+  });
 
-  container
-    .querySelector("#searchProductButton")
-    .addEventListener("click", searchProduct);
+  container.querySelector("#searchProductButton").addEventListener("click", searchProduct);
 
   container.querySelector("#openCartButton").addEventListener("click", () => {
     const dashboardCartArea = container.querySelector("#dashboardCartArea");
-    const navigationButton = document.getElementById('navigationButton');
+    const navigationButton = document.getElementById("navigationButton");
     dashboardCartArea.style.display = dashboardCartArea.style.display === "none" ? "block" : "none";
-    if (navigationButton.style.display === 'flex') {
-      navigationButton.style.display = 'none';
+    if (navigationButton.style.display === "flex") {
+      navigationButton.style.display = "none";
     }
   });
 

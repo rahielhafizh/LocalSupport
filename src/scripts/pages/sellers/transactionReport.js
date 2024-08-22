@@ -9,14 +9,12 @@ import {
   getDoc,
 } from "firebase/firestore";
 import firebaseConfig from "../../common/config";
-
 import profileIcon from "../../../public/icons/profile-icon.svg";
 import menuIcon from "../../../public/icons/menu-icon.svg";
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
 const db = getFirestore(firebaseApp);
-
 const dateRange = { startDate: '', endDate: '' };
 
 const renderTransactionReportPage = (container) => {

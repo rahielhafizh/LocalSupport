@@ -393,19 +393,11 @@ const loadSavedSellers = async () => {
   const user = auth.currentUser;
   if (user) {
     const customerId = user.uid;
-    const savedSellersRef = collection(
-      db,
-      "customers",
-      customerId,
-      "savedSeller",
-    );
+    const savedSellersRef = collection(db, "customers", customerId, "savedSeller");
     const savedSellersSnapshot = await getDocs(savedSellersRef);
-
     savedSellersSnapshot.forEach((doc) => {
       const sellerId = doc.id;
-      const bookmarkButton = document
-        .getElementById(sellerId)
-        .querySelector("img");
+      const bookmarkButton = document.getElementById(sellerId).querySelector("img");
       if (bookmarkButton) {
         bookmarkButton.src = bookmarkedIcon;
       }

@@ -5,7 +5,6 @@ import {
 } from "firebase/firestore";
 import "../../../styles/profileCustomer.css";
 import firebaseConfig from "../../common/config";
-
 import backIcon from "../../../public/icons/back-icon.svg";
 
 const firebaseApp = initializeApp(firebaseConfig);

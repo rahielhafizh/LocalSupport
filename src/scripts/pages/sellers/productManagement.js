@@ -229,12 +229,15 @@ const renderProducts = async (user) => {
     products.sort((a, b) => a.name.localeCompare(b.name));
 
     products.forEach((product) => {
+      const formattedBuyPrice = product.buyPrice.toLocaleString('id-ID');
+      const formattedSellPrice = product.sellPrice.toLocaleString('id-ID');
+
       const productDetail = `
         <div class="productDetail" data-id="${product.id}">
           <img src="${product.imageUrl || "../../../public/images/dummyImage.jpg"}" alt="${product.name}" />
           <h1>${product.name}</h1>
-          <h2 id="productBuyPrice">${product.buyPrice}</h2>
-          <h2>${product.sellPrice}</h2>
+          <h2 id="productBuyPrice">${formattedBuyPrice}</h2>
+          <h2>${formattedSellPrice}</h2>
           <h2>Stok : ${product.stock}</h2>
           <div class="productButton">
             <button class="blueButton editProduct" id="editProduct">Perbarui</button>

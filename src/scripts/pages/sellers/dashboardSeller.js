@@ -132,7 +132,7 @@ const renderDashboardSellerPage = (container) => {
         <div class="productSelection" data-product-id="${product.id}">
             <img id="imagePreview" src="${product.imageUrl || "../../../public/images/dummyImage.jpg"}" alt="${product.name}" />
             <h1 id="productName">${product.name}</h1>
-            <h2 id="productSellPrice">${product.sellPrice}</h2>
+        <h2 id="productSellPrice">${product.sellPrice.toLocaleString('id-ID')}</h2>
             <div class="stockAmount">
                 <h1>Stok :</h1>
                 <h1 id="stockAmount">${product.stock}</h1>
@@ -249,7 +249,7 @@ const renderDashboardSellerPage = (container) => {
 }" alt="${product.name}" />
             <div class="dashboardCartProductDetail">
                 <h1>${product.name}</h1>
-                <h2>${product.sellPrice}</h2>
+                <h2>${product.sellPrice.toLocaleString('id-ID')}</h2>
             </div>
             <div class="dashboardCartProductAmount">
                 <h1>Jumlah :</h1>

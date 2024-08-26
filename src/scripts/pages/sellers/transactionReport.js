@@ -364,7 +364,7 @@ const displayTransactionIncomeReports = async () => {
         transactionRow.innerHTML = `
           <td>${doc.id}</td>
           <td>${totalProducts}</td>
-          <td>${totalPrice}</td>
+          <td>${totalPrice.toLocaleString('id-ID')}</td>
         `;
 
         transactionRow.addEventListener("click", async () => {
@@ -418,7 +418,7 @@ const displayTransactionOutcomeReports = async () => {
         transactionRow.innerHTML = `
           <td>${doc.id}</td>
           <td>${totalProducts}</td>
-          <td>${totalPrice}</td>
+          <td>${totalPrice.toLocaleString('id-ID')}</td>
         `;
 
         transactionRow.addEventListener("click", async () => {
@@ -455,7 +455,7 @@ const displayTransactionIncomeDailyReport = async (docId) => {
     productRow.innerHTML = `
       <td>${product.name}</td>
       <td>${product.quantity}</td>
-      <td>${product.sellPrice}</td>
+      <td>${product.sellPrice.toLocaleString('id-ID')}</td>
       <td>${product.quantity * product.sellPrice}</td>
     `;
     transactionIncomeDailyDetail.appendChild(productRow);
@@ -480,7 +480,7 @@ const displayTransactionOutcomeDailyReport = async (docId) => {
     productRow.innerHTML = `
       <td>${product.name}</td>
       <td>${product.quantity}</td>
-      <td>${product.buyPrice}</td>
+      <td>${product.buyPrice.toLocaleString('id-ID')}</td>
       <td>${product.quantity * product.buyPrice}</td>
     `;
     transactionOutcomeDailyDetail.appendChild(productRow);
@@ -566,7 +566,7 @@ const evaluateSales = async () => {
       productRow.innerHTML = `
         <td>${product.name}</td>
         <td>${product.quantity}</td>
-        <td>${product.totalPrice}</td>
+        <td>${product.totalPrice.toLocaleString('id-ID')}</td>
       `;
       highestSalesDetail.appendChild(productRow);
     });
@@ -582,7 +582,7 @@ const evaluateSales = async () => {
       productRow.innerHTML = `
         <td>${product.name}</td>
         <td>${product.quantity}</td>
-        <td>${product.totalPrice}</td>
+        <td>${product.totalPrice.toLocaleString('id-ID')}</td>
       `;
       lowestSalesDetail.appendChild(productRow);
     });
@@ -648,9 +648,9 @@ const evaluateTotalRevenue = async () => {
     revenueRow.className = 'evaluationTotalRevenueProduct';
     revenueRow.innerHTML = `
       <td>${date}</td>
-      <td>${totalIncome}</td>
-      <td>${totalCapital}</td>
-      <td>${totalRevenue}</td>
+      <td>${totalIncome.toLocaleString('id-ID')}</td>
+      <td>${totalCapital.toLocaleString('id-ID')}</td>
+      <td>${totalRevenue.toLocaleString('id-ID')}</td>
     `;
     revenueDetailBody.appendChild(revenueRow);
   });

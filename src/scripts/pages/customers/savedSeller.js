@@ -318,7 +318,7 @@ const displaySellerProducts = async (sellerId) => {
       productDiv.innerHTML = `
         <img src="${productData.imageUrl}" alt="Product Image" />
         <h1 id="name">${productData.name}</h1>
-        <h2 id="sellPrice">${productData.sellPrice}</h2>
+        <h2 id="sellPrice">${productData.sellPrice.toLocaleString('id-ID')}</h2>
       `;
       productList.appendChild(productDiv);
     });

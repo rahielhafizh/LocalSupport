@@ -128,7 +128,7 @@ const renderStockManagementPage = (container) => {
         <div class="productSelection" data-product-id="${product.id}">
             <img id="imagePreview" src="${product.imageUrl || "/src/Dummy Photos.png"}" alt="Preview Gambar" />
                 <h1 id="productName">${product.name}</h1>
-                <h2 id="productBuyPrice">${product.buyPrice}</h2>
+                <h2 id="productBuyPrice">${product.buyPrice.toLocaleString('id-ID')}</h2>
                 <div class="stockAmount">
                     <h1>Stok :</h1>
                     <h1 id="stockAmount">${product.stock}</h1>
@@ -233,7 +233,7 @@ const renderStockManagementPage = (container) => {
             <img src="${product.imageUrl || "../../../public/images/dummyImage.jpg"}" alt="${product.name}" />
                 <div class="restockCartProductDetail">
                   <h1>${product.name}</h1>
-                  <h2>${product.buyPrice}</h2>
+                  <h2>${product.buyPrice.toLocaleString('id-ID')}</h2>
                 </div>
                 <div class="restockCartProductAmount">
                   <h1>Jumlah :</h1>
